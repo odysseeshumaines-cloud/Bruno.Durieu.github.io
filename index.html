@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bruno Durieu – Photographies</title>
+<style>
+  body { margin:0; background:#111; color:#eee; font-family:Georgia,serif; }
+  h1 { text-align:center; font-weight:normal; letter-spacing:.2em; padding:2rem 0 1rem; }
+  .grille { columns:3 280px; gap:10px; padding:10px; }
+  .grille img { width:100%; margin-bottom:10px; display:block; cursor:zoom-in; }
+  #zoom { display:none; position:fixed; inset:0; background:rgba(0,0,0,.95);
+          align-items:center; justify-content:center; cursor:zoom-out; }
+  #zoom img { max-width:95%; max-height:95%; }
+</style>
+</head>
+<body>
+<h1>BRUNO DURIEU</h1>
+<div class="grille">
+  <img src="FulmarBoreal.jpg" alt="">
+  <img src="PinguinGuillemot.jpg" alt="">
+  <img src="PingouinTorda.jpg" alt="">
+  <img src="SterneArctique.jpg" alt="">
+  <img src="MacareuxMoine.jpg" alt="">
+  <img src="FousdeBassan.jpg" alt="">
+</div>
+<div id="zoom"><img></div>
+<script>
+  const zoom = document.getElementById('zoom');
+  document.querySelectorAll('.grille img').forEach(i => i.onclick = () => {
+    zoom.querySelector('img').src = i.src; zoom.style.display = 'flex';
+  });
+  zoom.onclick = () => zoom.style.display = 'none';
+</script>
+</body>
+</html>
