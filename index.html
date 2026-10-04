@@ -1,36 +1,51 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bruno Durieu – Photographies</title>
-<style>
-  body { margin:0; background:#111; color:#eee; font-family:Georgia,serif; }
-  h1 { text-align:center; font-weight:normal; letter-spacing:.2em; padding:2rem 0 1rem; }
-  .grille { columns:3 280px; gap:10px; padding:10px; }
-  .grille img { width:100%; margin-bottom:10px; display:block; cursor:zoom-in; }
-  #zoom { display:none; position:fixed; inset:0; background:rgba(0,0,0,.95);
-          align-items:center; justify-content:center; cursor:zoom-out; }
-  #zoom img { max-width:95%; max-height:95%; }
-</style>
-</head>
-<body>
-<h1>BRUNO DURIEU</h1>
-<div class="grille">
-  <img src="FousdeBassan.jpg" alt="Fous de Bassan">
-  <img src="FulmarBoreal.jpg" alt="Fulmar boréal">
-  <img src="MacareuxMoine.jpg" alt="Macareux moine">
-  <img src="PingouinTorda.jpg" alt="Pingouin torda">
-  <img src="PinguinGuillemot.jpg" alt="Pinguin Guillemot">
-  <img src="SterneArctique.jpg" alt="Sterne arctique">
+---
+layout: default
+---
+
+<!-- Main -->
+<div id="main">
+  <!-- Header -->
+  <header id="header">
+    <h1>{{ site.header }}</h1>
+    <h2>{{ site.subheader }}</h2>
+    <p>{{ site.bio }}</p>
+    {% if site.social %}
+      <ul class="icons">
+        {% if site.social.twitter_username and site.social.twitter_username != "" %}
+          <li><a href="https://twitter.com/{{ site.social.twitter_username }}" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+        {% endif %}
+        {% if site.social.facebook_username and site.social.facebook_username != "" %}
+          <li><a href="https://www.facebook.com/{{ site.social.facebook_username }}" class="icon fa-facebook-official"><span class="label">Facebook</span></a></li>
+        {% endif %}
+        {% if site.social.instagram_username and site.social.instagram_username != "" %}
+          <li><a href="https://instagram.com/{{ site.social.instagram_username }}" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+        {% endif %}
+        {% if site.social.github_username and site.social.github_username != "" %}
+          <li><a href="https://github.com/{{ site.social.github_username }}" class="icon fa-github"><span class="label">Github</span></a></li>
+        {% endif %}
+        {% if site.social.email and site.social.email != "" %}
+          <li><a href="mailto:{{ site.social.email }}" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+        {% endif %}
+      </ul>
+    {% endif %}
+  </header>
+
+  <!-- Thumbnail -->
+  <section id="thumbnails">
+    {% assign gallery = site.static_files | where: "image", true %}
+    {% for image in gallery %}
+      <article>
+        <a class="thumbnail" href="{{ site.gallery_dir }}/{{ image.name }}" data-position="{{ site.thumbnail_position }}"><img src="{{ site.gallery_dir }}/{{ image.name }}" alt="{{ image.basename }}" /></a>
+        <h2>{{ image.basename | replace: "_", " " }}</h2>
+      </article>
+    {% endfor %}
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <ul class="copyright">
+      <li>{{ site.copyright }}</li>
+      <li>Powered by <a href="https://jekyllrb.com/">Jekyll</a> and <a href="https://github.com/ElasticDesigns/jekyll-lens">Jekyll Lens</a></li>
+    </ul>
+  </footer>
 </div>
-<div id="zoom"><img></div>
-<script>
-  const zoom = document.getElementById('zoom');
-  document.querySelectorAll('.grille img').forEach(i => i.onclick = () => {
-    zoom.querySelector('img').src = i.src; zoom.style.display = 'flex';
-  });
-  zoom.onclick = () => zoom.style.display = 'none';
-</script>
-</body>
-</html>
