@@ -1240,9 +1240,7 @@
 				}
 
 		}
-#thumbnails img {
-  max-width: 800px !important;
-  max-height: 800px !important;
-  width: auto !important;
-  height: auto !important;
+#viewer .slide .image {
+    background-size: auto !important;
+    background-position: center center !important;
 }
