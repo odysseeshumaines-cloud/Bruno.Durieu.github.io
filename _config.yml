@@ -49,3 +49,6 @@ defaults:
     path: "gallery"
    values:
     image: true
+plugins:
+  - jekyll-resize   
+  {{ "my-image.png" | resize: "800x800>" }}   
