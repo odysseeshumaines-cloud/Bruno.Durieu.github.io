@@ -61,7 +61,7 @@ layout: default
 {% for image in gallery %}
 <article>
 <a class="thumbnail" href="{{ image.path | relative_url }}" data-position="{{ site.thumbnails_position }}">
-<img src="{{ image.path | resize: "800x800>" }} alt="{{ image.basename }}">
+<img src="{{ image.path | remove_first: '/' | resize: "800x800>" | relative_url }}" alt="{{ image.basename }}">   
 <h2>{{ image.basename | replace: "_", " " }}</h2>
 </a>
 </article>
