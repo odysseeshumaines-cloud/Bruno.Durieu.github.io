@@ -8,6 +8,12 @@ layout: default
   <header id="header">
     <h1>{{ site.header }}</h1>
     <h2>{{ site.subheader }}</h2>
+    <form id="private-access-form">
+      <label for="private-password">Mot de passe</label>
+      <input id="private-password" type="password" autocomplete="current-password" required />
+      <p id="private-access-message" role="status" aria-live="polite"></p>
+      <button type="submit">Accéder aux photos</button>
+    </form>
     <p>{{ site.bio }}</p>
     <p>
       <a href="{{ '/' | relative_url }}">Tout</a> |
@@ -40,13 +46,6 @@ layout: default
   </header>
 
   <!-- Thumbnail -->
-  <form id="private-access-form">
-    <label for="private-password">Mot de passe</label>
-    <input id="private-password" type="password" autocomplete="current-password" required />
-    <p id="private-access-message" role="status" aria-live="polite"></p>
-    <button type="submit">Accéder aux photos</button>
-  </form>
-
   <section id="thumbnails" style="display: none;">
     {% assign gallery = site.static_files | where: "image", true | where_exp: "f", "f.path contains '/gallery/Private/' or f.path contains '/gallery/private/'" %}
     {% if gallery.size > 0 %}
