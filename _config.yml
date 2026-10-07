@@ -51,3 +51,5 @@ defaults:
     image: true
 plugins:
   - jekyll-resize
+include:
+  - cache   
