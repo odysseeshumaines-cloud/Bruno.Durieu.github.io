@@ -49,5 +49,5 @@ defaults:
     path: "gallery"
    values:
     image: true
- plugins:
+plugins:
   - jekyll-resize
