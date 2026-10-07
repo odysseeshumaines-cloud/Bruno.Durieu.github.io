@@ -42,14 +42,14 @@ layout: default
   </header>
 
   <section id="thumbnails">
-  {% assign gallery = site.static_files | where: "image", true | where_exp: "f", "f.path contains '/gallery/Rue/'" %}
-  {% for image in gallery %}
-  <article>
-    <a class="thumbnail" href="{{ image.path | relative_url }}" data-position="{{ site.thumbnail_position }}"><img src="{{ image.path | relative_url }}" alt="{{ image.basename }}" /></a>
-    <h2>{{ image.basename | replace: "_", " " }}</h2>
-  </article>
-  {% endfor %}
-</section>
+    {% assign gallery = site.static_files | where: "image", true | where_exp: "f", "f.path contains '/gallery/Urbanisme/'" %}
+    {% for image in gallery %}
+    <article>
+      <a class="thumbnail" href="{{ image.path | relative_url }}" data-position="{{ site.thumbnail_position }}"><img src="{{ image.path | relative_url }}" alt="{{ image.basename }}" /></a>
+      <h2>{{ image.basename | replace: "_", " " }}</h2>
+    </article>
+    {% endfor %}
+  </section>
 
   <!-- Footer -->
   <footer id="footer">
