@@ -9,15 +9,15 @@ layout: default
     <h1>{{ site.header }}</h1>
     <h2>{{ site.subheader }}</h2>
     <p>{{ site.bio }}</p>
-<p>
-  <a href="{{ '/' | relative_url }}">Tout</a> |
-  <a href="{{ '/Rue.html' | relative_url }}">Rue</a> |
-  <a href="{{ '/Flore.html' | relative_url }}">Flore</a> |
-  <a href="{{ '/Mammiferes.html' | relative_url }}">Mammiferes</a> |
-  <a href="{{ '/Oiseaux.html' | relative_url }}">Oiseaux</a> |
-  <a href="{{ '/Paysages.html' | relative_url }}">Paysages</a>
-  <a href="{{ '/Private.html' | relative_url }}">Private</a>
-</p>
+    <p>
+      <a href="{{ '/' | relative_url }}">Tout</a> |
+      <a href="{{ '/Rue.html' | relative_url }}">Rue</a> |
+      <a href="{{ '/Flore.html' | relative_url }}">Flore</a> |
+      <a href="{{ '/Mammiferes.html' | relative_url }}">Mammiferes</a> |
+      <a href="{{ '/Oiseaux.html' | relative_url }}">Oiseaux</a> |
+      <a href="{{ '/Paysages.html' | relative_url }}">Paysages</a> |
+      <a href="{{ '/Private.html' | relative_url }}">Private</a>
+    </p>
     {% if site.social %}
       <ul class="icons">
         {% if site.social.twitter_username and site.social.twitter_username != "" %}
@@ -41,7 +41,7 @@ layout: default
 
   <!-- Thumbnail -->
  <section id="thumbnails">
-  {% assign gallery = site.static_files | where: "image", true | where_exp: "f", "f.path contains '/gallery/Oiseaux/'" %}
+  {% assign gallery = site.static_files | where: "image", true | where_exp: "f", "f.path contains '/gallery/Flore/'" %}
   {% for image in gallery %}
   <article>
     <a class="thumbnail" href="{{ image.path | relative_url }}" data-position="{{ site.thumbnail_position }}"><img src="{{ image.path | relative_url }}" alt="{{ image.basename }}" /></a>
