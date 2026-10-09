@@ -60,9 +60,16 @@ layout: default
   {% endfor %}
   {% assign albums = albums | sort %}
   {% for album in albums %}
-    {% assign album_path = '/gallery/' | append: album | append: '/' %}
-    {% assign album_images = site.static_files | where: "image", true | where_exp: "f", "f.path contains album_path" %}
-    {% assign first_image = album_images | first %}
+    {% assign first_image = nil %}
+    {% for image in gallery %}
+      {% assign image_folder = image.path | split: '/gallery/' | last | split: '/' | first %}
+      {% if image_folder == album and album == 'Portrait' and image.path contains '24635392608_1673b6bfd4_o.jpg' %}
+        {% assign first_image = image %}
+        {% break %}
+      {% elsif image_folder == album and first_image == nil %}
+        {% assign first_image = image %}
+      {% endif %}
+    {% endfor %}
     {% if first_image %}
       {% assign album_page = album | append: '.html' %}
       <article>
