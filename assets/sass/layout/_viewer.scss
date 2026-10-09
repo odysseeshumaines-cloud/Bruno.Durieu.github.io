@@ -205,6 +205,12 @@
 		@include breakpoint(medium) {
 			width: 100%;
 
+			.slide {
+				.image {
+					background-size: contain;
+				}
+			}
+
 			.inner {
 				.toggle {
 					@include vendor('transition', 'opacity #{_duration(layout)} ease');

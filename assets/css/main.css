@@ -1178,6 +1178,10 @@
 				width: 100%;
 			}
 
+				#viewer .slide .image {
+					background-size: contain;
+				}
+
 				#viewer .inner .toggle {
 					-moz-transition: opacity 0.75s ease;
 					-webkit-transition: opacity 0.75s ease;
