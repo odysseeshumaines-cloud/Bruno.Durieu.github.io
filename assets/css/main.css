@@ -855,13 +855,21 @@
 		padding: 0 0.75em;
 	}
 
-		#thumbnails .private-category-nav,
 		#thumbnails .private-category {
 			width: 100%;
 		}
 
-		#thumbnails .private-category-nav {
-			margin-bottom: 1.5em;
+		.private-category-nav {
+			display: -moz-flex;
+			display: -webkit-flex;
+			display: -ms-flex;
+			display: flex;
+			-moz-flex-wrap: wrap;
+			-webkit-flex-wrap: wrap;
+			-ms-flex-wrap: wrap;
+			flex-wrap: wrap;
+			gap: 0.5em 1em;
+			margin: 0 2.25em 1.5em;
 		}
 
 		#thumbnails .private-category {
