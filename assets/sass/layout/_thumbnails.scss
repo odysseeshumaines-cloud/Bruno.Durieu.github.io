@@ -15,6 +15,11 @@
 		@include vendor('flex-wrap', 'wrap');
 		padding: 0 0.75em;
 
+		#private-folders {
+			@include vendor('flex', '0 0 100%');
+			width: 100%;
+		}
+
 		.private-category {
 			width: 100%;
 		}
