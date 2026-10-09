@@ -516,6 +516,7 @@ var main = (function($) { var _ = {
 
 						if (_.current === null
 						&&	_.slides.length > 0
+						&&	!skel.breakpoint('medium').active
 						&&	!_.$body.hasClass('private-locked'))
 							_.switchTo(0, true);
 
