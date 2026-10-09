@@ -55,21 +55,23 @@ layout: default
 
   <!-- Thumbnail -->
   <section id="thumbnails" style="display: none;">
-    <div class="private-category" id="private-folders">
-      <h2>Sous-dossiers</h2>
-      <div class="private-category-thumbnails">
-        {% for category in private_categories %}
-          {% assign category_path = '/gallery/Private/' | append: category | append: '/' %}
-          {% assign category_gallery = site.static_files | where: "image", true | where_exp: "f", "f.path contains category_path" %}
-          {% assign first_image = category_gallery | first %}
-          {% if first_image %}
+    <div id="private-folders">
+      {% for category in private_categories %}
+        {% assign category_path = '/gallery/Private/' | append: category | append: '/' %}
+        {% assign category_gallery = site.static_files | where: "image", true | where_exp: "f", "f.path contains category_path" %}
+        {% assign first_image = category_gallery | first %}
+        {% if first_image %}
+          <div class="private-category">
+            <h2>{{ category }}</h2>
+            <div class="private-category-thumbnails">
             <article>
               <a class="thumbnail" href="#private-{{ category | slugify }}" data-folder-link data-private-folder="{{ category | slugify }}" data-position="{{ site.thumbnail_position }}"><img data-private-preview="{{ first_image.path | relative_url }}" alt="{{ category }}" /></a>
               <h2>{{ category }}</h2>
             </article>
-          {% endif %}
-        {% endfor %}
-      </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
     </div>
 
     {% for category in private_categories %}
