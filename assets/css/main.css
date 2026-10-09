@@ -1336,8 +1336,23 @@
 					background-size: 32px 32px;
 				}
 
-				body.fullscreen #viewer {
-					-moz-transition-delay: 0.5s;
+				#viewer .slide .image {
+					height: 68%;
+					background-position: center top;
+				}
+
+				#viewer .slide .caption {
+					top: 68%;
+					bottom: 0;
+					overflow-y: auto;
+					background-image: none;
+					background-color: rgba(16, 16, 16, 0.96);
+					padding: 1em 1.25em 0.1em;
+					color: rgba(255, 255, 255, 0.85);
+				}
+
+					body.fullscreen #viewer {
+						-moz-transition-delay: 0.5s;
 					-webkit-transition-delay: 0.5s;
 					-ms-transition-delay: 0.5s;
 					transition-delay: 0.5s;

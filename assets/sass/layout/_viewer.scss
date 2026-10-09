@@ -268,6 +268,23 @@
 			@include vendor('transition-delay', '0s');
 			opacity: 0;
 
+			.slide {
+				.image {
+					height: 68%;
+					background-position: center top;
+				}
+
+				.caption {
+					top: 68%;
+					bottom: 0;
+					overflow-y: auto;
+					background-image: none;
+					background-color: rgba(16,16,16,0.96);
+					@include padding(1em, 1.25em);
+					color: rgba(255,255,255,0.85);
+				}
+			}
+
 			.inner {
 				.toggle {
 					background-image: url('images/close-small.svg') !important;
