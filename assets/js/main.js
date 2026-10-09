@@ -409,7 +409,7 @@ var main = (function($) { var _ = {
 				});
 
 		// Create slides from thumbnails.
-			_.$thumbnails.children()
+			_.$thumbnails.find('article')
 				.each(function() {
 
 					var	$this = $(this),

@@ -15,6 +15,28 @@
 		@include vendor('flex-wrap', 'wrap');
 		padding: 0 0.75em;
 
+		.private-category-nav,
+		.private-category {
+			width: 100%;
+		}
+
+		.private-category-nav {
+			margin-bottom: 1.5em;
+		}
+
+		.private-category {
+			margin-bottom: 2em;
+
+			> h2 {
+				margin-bottom: 0.75em;
+			}
+		}
+
+		.private-category-thumbnails {
+			@include vendor('display', 'flex');
+			@include vendor('flex-wrap', 'wrap');
+		}
+
 		article {
 			position: relative;
 			width: #{100% / _misc(thumbnails-per-row)};
