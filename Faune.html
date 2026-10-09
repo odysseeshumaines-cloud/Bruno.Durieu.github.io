@@ -66,11 +66,12 @@ layout: default
         <h2>{{ category }}</h2>
         <div class="private-category-thumbnails">
           {% if category_gallery.size > 0 %}
-            {% assign image = category_gallery | first %}
+            {% for image in category_gallery limit: 1 %}
             <article>
               <a class="thumbnail" href="{{ image.path | relative_url }}" data-position="{{ site.thumbnail_position }}"><img src="{{ image.path | relative_url }}" alt="{{ image.basename }}" /></a>
               <h2>{{ image.basename | replace: "_", " " }}</h2>
             </article>
+            {% endfor %}
           {% else %}
             <p>Aucune photo pour le moment.</p>
           {% endif %}
