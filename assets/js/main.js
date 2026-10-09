@@ -617,6 +617,7 @@ var main = (function($) { var _ = {
 
 										// Mark as active.
 											newSlide.$slide.addClass('active');
+											_.trackImageView(newSlide);
 
 										// Unlock.
 											window.setTimeout(function() {
@@ -637,6 +638,7 @@ var main = (function($) { var _ = {
 
 								// Mark as active.
 									newSlide.$slide.addClass('active');
+									_.trackImageView(newSlide);
 
 								// Unlock.
 									window.setTimeout(function() {
@@ -656,6 +658,16 @@ var main = (function($) { var _ = {
 				// Otherwise, wait for old slide to disappear first.
 					else
 						window.setTimeout(f, _.settings.slideDuration);
+
+	},
+
+	/**
+	 * Records an image view when analytics is configured.
+	 */
+	trackImageView: function(slide) {
+
+		if (window.umami && typeof window.umami.track === 'function')
+			window.umami.track('image_view', { image: slide.url });
 
 	},
 

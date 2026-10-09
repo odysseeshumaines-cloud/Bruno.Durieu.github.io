@@ -2,5 +2,8 @@
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/skel.min.js"></script>
 <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+{% if site.umami_website_id and site.umami_website_id != "" %}
+<script defer src="https://cloud.umami.is/script.js" data-website-id="{{ site.umami_website_id | escape }}"></script>
+{% endif %}
 <script src="assets/js/main.js"></script>
 <script src="assets/js/guestbook.js"></script>

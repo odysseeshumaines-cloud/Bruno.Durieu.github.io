@@ -38,6 +38,21 @@ in minutes.
 
 1.  Now, visit your website and see the magic! 🎉
 
+## Site and photo statistics
+
+The site can use [Umami Cloud](https://cloud.umami.is/) to count visits and
+record each photo opened in the gallery. Historical visits and photo views
+from before Umami is enabled are not available.
+
+1. Create a website in Umami Cloud and copy its Website ID.
+1. Set `umami_website_id` in `_config.yml` to that ID.
+1. Publish the site. Umami records page visits automatically; opened photos
+   appear as the `image_view` event, with the image path in the `image` property.
+
+Leave `umami_website_id` empty to keep analytics disabled. The Website ID is
+intended to be public; do not put an Umami account password or API key in the
+repository.
+
 > If you liked this project, please ⭐ **Star** this repository to show your
 >  love.
 

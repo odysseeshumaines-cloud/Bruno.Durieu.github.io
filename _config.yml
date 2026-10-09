@@ -39,6 +39,8 @@ social:
 # Formspree endpoint for the moderated guestbook.
 guestbook_form_endpoint: "https://formspree.io/f/xvkzayrg"
 
+umami_website_id: "6c709403-d120-4bb0-847b-d4cbb703741d"
+
 ## Gallery Configuration ##
 # If you modify this, also modify the `default.scope.path` key below.
 gallery_dir: "gallery"
