@@ -8,12 +8,12 @@ layout: default
   <header id="header">
     <h1>{{ site.header }}</h1>
     <h2>{{ site.subheader }}</h2>
-    <p>Cette rubrique présente une démarche photographique autour de la macrologie. Texte descriptif à compléter.</p>
+    <p>Cette rubrique présente une démarche photographique autour de la macrophotographie. Texte descriptif à compléter.</p>
     <p>
       <a href="{{ '/' | relative_url }}">Tout</a> |
       <a href="{{ '/Faune.html' | relative_url }}">Faune</a> |
       <a href="{{ '/Flore.html' | relative_url }}">Flore</a> |
-      <a href="{{ '/Macrologie.html' | relative_url }}">Macrologie</a> |
+      <a href="{{ '/Macrophotographie.html' | relative_url }}">Macrophotographie</a> |
       <a href="{{ '/Paysages.html' | relative_url }}">Paysages</a> |
       <a href="{{ '/Portrait.html' | relative_url }}">Portraits</a> |
       <a href="{{ '/Private.html' | relative_url }}">Private</a> |
@@ -43,7 +43,7 @@ layout: default
 
   <!-- Thumbnail -->
   <section id="thumbnails">
-    {% assign gallery = site.static_files | where: "image", true | where_exp: "f", "f.path contains '/gallery/Macrologie/'" %}
+    {% assign gallery = site.static_files | where: "image", true | where_exp: "f", "f.path contains '/gallery/Macrophotographie/'" %}
     {% for image in gallery %}
     <article>
       <a class="thumbnail" href="{{ image.path | relative_url }}" data-position="{{ site.thumbnail_position }}"><img src="{{ image.path | relative_url }}" alt="{{ image.basename }}" /></a>

@@ -15,7 +15,7 @@ layout: default
       <a href="{{ '/' | relative_url }}">Tout</a> |
       <a href="{{ '/Faune.html' | relative_url }}">Faune</a> |
       <a href="{{ '/Flore.html' | relative_url }}">Flore</a> |
-      <a href="{{ '/Macrologie.html' | relative_url }}">Macrologie</a> |
+      <a href="{{ '/Macrophotographie.html' | relative_url }}">Macrophotographie</a> |
       <a href="{{ '/Paysages.html' | relative_url }}">Paysages</a> |
       <a href="{{ '/Portrait.html' | relative_url }}">Portraits</a> |
       <a href="{{ '/Private.html' | relative_url }}">Private</a> |
@@ -78,7 +78,7 @@ layout: default
       {% assign albums = albums | push: 'Portrait' %}
     {% endunless %}
   {% endif %}
-  {% assign home_album_order = "Faune,Flore,Macrologie,Paysages,Portrait,Concerts-et-Spectacles,Conventions,Transports,Mariage,Sports,Rue,Urbanisme" | split: "," %}
+  {% assign home_album_order = "Faune,Flore,Macrophotographie,Paysages,Portrait,Concerts-et-Spectacles,Conventions,Transports,Mariage,Sports,Rue,Urbanisme" | split: "," %}
   {% assign ordered_albums = '' | split: ',' %}
   {% for album in home_album_order %}
     {% if albums contains album %}
