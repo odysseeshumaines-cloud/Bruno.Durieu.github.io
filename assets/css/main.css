@@ -1198,8 +1198,16 @@
 				z-index: 1;
 			}
 
-				#viewer .slide .caption h2, #viewer .slide .caption h3, #viewer .slide .caption h4, #viewer .slide .caption h5, #viewer .slide .caption h6 {
+				#viewer .slide .caption h2 {
 					color: rgba(180, 180, 180, 0.65);
+				}
+
+				#viewer .slide .caption h3, #viewer .slide .caption h4, #viewer .slide .caption h5, #viewer .slide .caption h6 {
+					color: #fff;
+				}
+
+				#viewer .slide .caption p {
+					color: rgba(255, 255, 255, 0.85);
 				}
 
 				#viewer .slide .caption-toggle {
