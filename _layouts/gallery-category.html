@@ -1,0 +1,44 @@
+---
+layout: default
+---
+
+<div id="main">
+  <header id="header">
+    <h1>{{ site.header }}</h1>
+    <h2>{{ site.subheader }}</h2>
+    <p>
+      <a href="{{ '/' | relative_url }}">Tout</a> |
+      <a href="{{ '/Concerts-et-Spectacles.html' | relative_url }}">Concerts et Spectacles</a> |
+      <a href="{{ '/Conventions.html' | relative_url }}">Conventions</a> |
+      <a href="{{ '/Transports.html' | relative_url }}">Transports</a> |
+      <a href="{{ '/Mariage.html' | relative_url }}">Mariage</a>
+    </p>
+  </header>
+
+  <section id="thumbnails">
+    {% assign category_path = page.gallery_folder | prepend: '/gallery/' | append: '/' %}
+    {% assign category_gallery = site.static_files | where: "image", true | where_exp: "f", "f.path contains category_path" %}
+    <div class="private-category">
+      <h2>{{ page.category }}</h2>
+      <div class="private-category-thumbnails">
+        {% if category_gallery.size > 0 %}
+          {% for image in category_gallery %}
+          <article>
+            <a class="thumbnail" href="{{ image.path | relative_url }}" data-position="{{ site.thumbnail_position }}"><img src="{{ image.path | relative_url }}" alt="{{ image.basename }}" /></a>
+            <h2>{{ image.basename | replace: "_", " " }}</h2>
+          </article>
+          {% endfor %}
+        {% else %}
+          <p>Aucune photo pour le moment.</p>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+
+  <footer id="footer">
+    <ul class="copyright">
+      <li>{{ site.copyright }}</li>
+      <li>Powered by <a href="https://jekyllrb.com/">Jekyll</a> and <a href="https://github.com/ElasticDesigns/jekyll-lens">Jekyll Lens</a></li>
+    </ul>
+  </footer>
+</div>
