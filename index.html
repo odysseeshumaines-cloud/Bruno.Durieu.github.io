@@ -86,7 +86,7 @@ layout: default
     {% if first_image %}
       {% assign album_page = album | append: '.html' %}
       <article>
-        <a class="thumbnail" href="{{ album_page | relative_url }}" data-position="{{ site.thumbnail_position }}"><img src="{{ first_image.path | relative_url }}" alt="{{ album }}" /></a>
+        <a class="thumbnail" href="{{ album_page | relative_url }}" data-folder-link data-position="{{ site.thumbnail_position }}"><img src="{{ first_image.path | relative_url }}" alt="{{ album }}" /></a>
         <h2>{{ album | replace: "-", " " }}</h2>
       </article>
     {% endif %}

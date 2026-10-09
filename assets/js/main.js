@@ -395,6 +395,9 @@ var main = (function($) { var _ = {
 
 					var $this = $(this);
 
+					if ($this.is('[data-folder-link]'))
+						return;
+
 					// Stop other events.
 						event.preventDefault();
 						event.stopPropagation();
@@ -425,6 +428,9 @@ var main = (function($) { var _ = {
 							url: $thumbnail.attr('href') || $thumbnail.data('image-url'),
 							loaded: false
 						};
+
+					if ($thumbnail.is('[data-folder-link]'))
+						return;
 
 					// Parent.
 						$this.attr('tabIndex', '-1');
@@ -509,6 +515,7 @@ var main = (function($) { var _ = {
 					skel.on('-xsmall !xsmall', function() {
 
 						if (_.current === null
+						&&	_.slides.length > 0
 						&&	!_.$body.hasClass('private-locked'))
 							_.switchTo(0, true);
 

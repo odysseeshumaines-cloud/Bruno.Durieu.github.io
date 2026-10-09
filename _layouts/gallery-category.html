@@ -17,7 +17,7 @@ layout: default
   </header>
 
   <section id="thumbnails">
-    {% assign category_path = page.gallery_folder | prepend: '/gallery/' | append: '/' %}
+    {% assign category_path = page.gallery_path | default: page.gallery_folder | prepend: '/gallery/' | append: '/' %}
     {% assign category_gallery = site.static_files | where: "image", true | where_exp: "f", "f.path contains category_path" %}
     <div class="private-category">
       <h2>{{ page.category }}</h2>

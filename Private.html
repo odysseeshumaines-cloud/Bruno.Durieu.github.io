@@ -55,14 +55,32 @@ layout: default
 
   <!-- Thumbnail -->
   <section id="thumbnails" style="display: none;">
+    <div class="private-category" id="private-folders">
+      <h2>Sous-dossiers</h2>
+      <div class="private-category-thumbnails">
+        {% for category in private_categories %}
+          {% assign category_path = '/gallery/Private/' | append: category | append: '/' %}
+          {% assign category_gallery = site.static_files | where: "image", true | where_exp: "f", "f.path contains category_path" %}
+          {% assign first_image = category_gallery | first %}
+          {% if first_image %}
+            <article>
+              <a class="thumbnail" href="#private-{{ category | slugify }}" data-folder-link data-private-folder="{{ category | slugify }}" data-position="{{ site.thumbnail_position }}"><img data-private-preview="{{ first_image.path | relative_url }}" alt="{{ category }}" /></a>
+              <h2>{{ category }}</h2>
+            </article>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
     {% for category in private_categories %}
       {% assign category_path = '/gallery/Private/' | append: category | append: '/' %}
       {% assign category_gallery = site.static_files | where: "image", true | where_exp: "f", "f.path contains category_path" %}
-      <div class="private-category" id="private-{{ category | slugify }}">
+      <div class="private-category" id="private-{{ category | slugify }}" data-private-gallery hidden>
+        <p><a href="#private-folders" data-private-back>Retour aux sous-dossiers</a></p>
         <h2>{{ category }}</h2>
         <div class="private-category-thumbnails">
           {% if category_gallery.size > 0 %}
-            {% for image in category_gallery limit: 1 %}
+            {% for image in category_gallery %}
             <article>
               <a class="thumbnail" data-image-url="{{ image.path | relative_url }}" data-position="{{ site.thumbnail_position }}"><img alt="{{ image.basename }}" /></a>
               <h2>{{ image.basename | replace: "_", " " }}</h2>
@@ -104,12 +122,56 @@ layout: default
       var message = document.getElementById('private-access-message');
       var thumbnails = document.getElementById('thumbnails');
       var categoryNav = document.querySelector('.private-category-nav');
+      var folderPicker = document.getElementById('private-folders');
+
+      function showPrivateFolder(folderId) {
+        var folder = document.getElementById(folderId);
+        if (!folder) {
+          return;
+        }
+
+        folderPicker.hidden = true;
+        thumbnails.querySelectorAll('[data-private-gallery]').forEach(function(gallery) {
+          gallery.hidden = gallery !== folder;
+        });
+        folder.scrollIntoView();
+      }
 
       categoryNav.addEventListener('click', function(event) {
         if (!form.hidden) {
           event.preventDefault();
           message.textContent = 'Saisissez le mot de passe pour accéder aux photos.';
           passwordInput.focus();
+          return;
+        }
+
+        var navLink = event.target.closest('a[href]');
+        if (!navLink) {
+          return;
+        }
+
+        var folderId = navLink.getAttribute('href').slice(1);
+        if (folderId.indexOf('private-') === 0) {
+          event.preventDefault();
+          showPrivateFolder(folderId);
+        }
+      });
+
+      thumbnails.addEventListener('click', function(event) {
+        var folderLink = event.target.closest('[data-private-folder]');
+        if (folderLink) {
+          event.preventDefault();
+          showPrivateFolder('private-' + folderLink.getAttribute('data-private-folder'));
+          return;
+        }
+
+        if (event.target.closest('[data-private-back]')) {
+          event.preventDefault();
+          thumbnails.querySelectorAll('[data-private-gallery]').forEach(function(gallery) {
+            gallery.hidden = true;
+          });
+          folderPicker.hidden = false;
+          folderPicker.scrollIntoView();
         }
       });
 
@@ -125,7 +187,12 @@ layout: default
             thumbnail.querySelector('img').setAttribute('src', imageUrl);
             thumbnail.removeAttribute('data-image-url');
           });
+          thumbnails.querySelectorAll('img[data-private-preview]').forEach(function(image) {
+            image.setAttribute('src', image.getAttribute('data-private-preview'));
+            image.removeAttribute('data-private-preview');
+          });
           thumbnails.style.removeProperty('display');
+          folderPicker.hidden = false;
           message.textContent = '';
           return;
         }
