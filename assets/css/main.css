@@ -859,6 +859,10 @@
 			width: 100%;
 		}
 
+		#thumbnails .private-category > h2 {
+			width: 100%;
+		}
+
 		.private-category-nav {
 			display: -moz-flex;
 			display: -webkit-flex;
