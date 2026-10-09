@@ -1030,6 +1030,10 @@
 		left: 0;
 	}
 
+	body.private-locked #viewer {
+		display: none;
+	}
+
 		#viewer .inner {
 			-moz-pointer-events: none;
 			-webkit-pointer-events: none;

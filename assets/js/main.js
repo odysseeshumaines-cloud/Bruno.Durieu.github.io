@@ -508,7 +508,8 @@ var main = (function($) { var _ = {
 				// Show first slide if xsmall isn't active or it just deactivated.
 					skel.on('-xsmall !xsmall', function() {
 
-						if (_.current === null)
+						if (_.current === null
+						&&	!_.$body.hasClass('private-locked'))
 							_.switchTo(0, true);
 
 					});
@@ -522,6 +523,10 @@ var main = (function($) { var _ = {
 	 * @param {integer} index Index.
 	 */
 	switchTo: function(index, noHide) {
+
+		// Do not open a slide on the password-protected page until it is unlocked.
+			if (_.$body.hasClass('private-locked'))
+				return;
 
 		// Already at index and xsmall isn't active? Bail.
 			if (_.current == index

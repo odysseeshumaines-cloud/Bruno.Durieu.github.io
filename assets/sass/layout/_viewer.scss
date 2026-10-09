@@ -20,6 +20,10 @@
 		}
 	}
 
+	body.private-locked #viewer {
+		display: none;
+	}
+
 	#viewer {
 		@include vendor('transition', ('opacity #{_duration(layout)} ease', 'width #{_duration(layout)} ease'));
 		position: fixed;
@@ -178,6 +182,7 @@
 				}
 			}
 		}
+
 
 		body.fullscreen & {
 			width: 100%;

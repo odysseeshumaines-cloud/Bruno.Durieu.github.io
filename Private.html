@@ -102,6 +102,8 @@ layout: default
 
   <script>
     (function() {
+      document.body.classList.add('private-locked');
+
       var form = document.getElementById('private-access-form');
       var passwordInput = document.getElementById('private-password');
       var message = document.getElementById('private-access-message');
@@ -121,6 +123,7 @@ layout: default
 
         if (passwordInput.value === 'Valnor') {
           form.hidden = true;
+          document.body.classList.remove('private-locked');
           thumbnails.style.removeProperty('display');
           message.textContent = '';
           return;
