@@ -511,16 +511,21 @@ var main = (function($) { var _ = {
 		// Initial slide.
 			window.setTimeout(function() {
 
-				// Show first slide if xsmall isn't active or it just deactivated.
-					skel.on('-xsmall !xsmall', function() {
+				var defaultThumbnail = _.$thumbnails.find('[data-default-slide]').first();
 
-						if (_.current === null
-						&&	_.slides.length > 0
-						&&	!skel.breakpoint('medium').active
-						&&	!_.$body.hasClass('private-locked'))
-							_.switchTo(0, true);
+				if (defaultThumbnail.length
+				&&	_.slides.length > 0
+				&&	!_.$body.hasClass('private-locked')) {
+					_.switchTo(defaultThumbnail.data('index'));
+					return;
+				}
 
-					});
+				skel.on('-xsmall !xsmall', function() {
+					if (_.current === null
+					&&	_.slides.length > 0
+					&&	!_.$body.hasClass('private-locked'))
+						_.switchTo(0, true);
+				});
 
 			}, 0);
 

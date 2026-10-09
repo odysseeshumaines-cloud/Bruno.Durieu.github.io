@@ -57,7 +57,7 @@ layout: default
       <h2>Accueil</h2>
       <div class="private-category-thumbnails">
         <article>
-          <a class="thumbnail" href="{{ accueil_image.path | relative_url }}" data-position="{{ site.thumbnail_position }}"><img src="{{ accueil_image.path | relative_url }}" alt="Accueil" /></a>
+          <a class="thumbnail" href="{{ accueil_image.path | relative_url }}" data-default-slide data-position="{{ site.thumbnail_position }}"><img src="{{ accueil_image.path | relative_url }}" alt="Accueil" /></a>
           <h2>Accueil</h2>
         </article>
       </div>
@@ -67,7 +67,7 @@ layout: default
   {% assign albums = '' | split: ',' %}
   {% for image in gallery %}
     {% assign folder = image.path | split: '/gallery/' | last | split: '/' | first %}
-    {% unless folder == 'Private' or albums contains folder %}
+    {% unless folder == 'Private' or folder == 'Mammiferes' or folder == 'Oiseaux' or albums contains folder %}
       {% assign albums = albums | push: folder %}
     {% endunless %}
   {% endfor %}
@@ -78,7 +78,20 @@ layout: default
       {% assign albums = albums | push: 'Portrait' %}
     {% endunless %}
   {% endif %}
-  {% assign albums = albums | sort %}
+  {% assign home_album_order = "Faune,Flore,Macrologie,Paysages,Portrait,Concerts-et-Spectacles,Conventions,Transports,Mariage,Sports,Rue,Urbanisme" | split: "," %}
+  {% assign ordered_albums = '' | split: ',' %}
+  {% for album in home_album_order %}
+    {% if albums contains album %}
+      {% assign ordered_albums = ordered_albums | push: album %}
+    {% endif %}
+  {% endfor %}
+  {% assign remaining_albums = albums | sort %}
+  {% for album in remaining_albums %}
+    {% unless home_album_order contains album %}
+      {% assign ordered_albums = ordered_albums | push: album %}
+    {% endunless %}
+  {% endfor %}
+  {% assign albums = ordered_albums %}
   {% for album in albums %}
     {% assign first_image = nil %}
     {% if album == 'Portrait' and portrait_image %}
