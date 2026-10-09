@@ -53,10 +53,15 @@ layout: default
   {% assign accueil_images = site.static_files | where_exp: "f", "f.path contains '/Accueil/24635392608_1673b6bfd4_o.jpg'" %}
   {% assign accueil_image = accueil_images | first %}
   {% if accueil_image %}
-    <article>
-      <a class="thumbnail" href="{{ accueil_image.path | relative_url }}" data-position="{{ site.thumbnail_position }}"><img src="{{ accueil_image.path | relative_url }}" alt="Accueil" /></a>
+    <div class="private-category">
       <h2>Accueil</h2>
-    </article>
+      <div class="private-category-thumbnails">
+        <article>
+          <a class="thumbnail" href="{{ accueil_image.path | relative_url }}" data-position="{{ site.thumbnail_position }}"><img src="{{ accueil_image.path | relative_url }}" alt="Accueil" /></a>
+          <h2>Accueil</h2>
+        </article>
+      </div>
+    </div>
   {% endif %}
   {% assign gallery = site.static_files | where: "image", true | where_exp: "f", "f.path contains '/gallery/'" %}
   {% assign albums = '' | split: ',' %}
@@ -85,10 +90,15 @@ layout: default
     {% endif %}
     {% if first_image %}
       {% assign album_page = album | append: '.html' %}
-      <article>
-        <a class="thumbnail" href="{{ album_page | relative_url }}" data-folder-link data-position="{{ site.thumbnail_position }}"><img src="{{ first_image.path | relative_url }}" alt="{{ album }}" /></a>
+      <div class="private-category">
         <h2>{{ album | replace: "-", " " }}</h2>
-      </article>
+        <div class="private-category-thumbnails">
+          <article>
+            <a class="thumbnail" href="{{ album_page | relative_url }}" data-folder-link data-position="{{ site.thumbnail_position }}"><img src="{{ first_image.path | relative_url }}" alt="{{ album }}" /></a>
+            <h2>{{ album | replace: "-", " " }}</h2>
+          </article>
+        </div>
+      </div>
     {% endif %}
   {% endfor %}
 </section>

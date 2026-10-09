@@ -516,7 +516,6 @@ var main = (function($) { var _ = {
 
 						if (_.current === null
 						&&	_.slides.length > 0
-						&&	_.$thumbnails.find('[data-folder-link]').length === 0
 						&&	!_.$body.hasClass('private-locked'))
 							_.switchTo(0, true);
 
