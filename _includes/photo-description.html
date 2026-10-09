@@ -1,0 +1,4 @@
+{% assign description = site.data.photo_descriptions[include.image.path] | default: "" | strip %}
+{% if description != "" %}
+<p>{{ description | escape | newline_to_br }}</p>
+{% endif %}
