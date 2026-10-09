@@ -22,10 +22,11 @@
 
 	#viewer {
 		@include vendor('transition', ('opacity #{_duration(layout)} ease', 'width #{_duration(layout)} ease'));
-		position: absolute;
+		position: fixed;
 		top: 0;
 		width: calc(100% - #{_size(main)});
-		height: 100%;
+		height: 100vh;
+		height: 100dvh;
 
 		@if _misc(main-side) == 'left' {
 			right: 0;
