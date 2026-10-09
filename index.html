@@ -50,6 +50,14 @@ layout: default
 
   <!-- Thumbnail -->
  <section id="thumbnails">
+  {% assign accueil_images = site.static_files | where_exp: "f", "f.path contains '/Accueil/24635392608_1673b6bfd4_o.jpg'" %}
+  {% assign accueil_image = accueil_images | first %}
+  {% if accueil_image %}
+    <article>
+      <a class="thumbnail" href="{{ accueil_image.path | relative_url }}" data-position="{{ site.thumbnail_position }}"><img src="{{ accueil_image.path | relative_url }}" alt="Accueil" /></a>
+      <h2>Accueil</h2>
+    </article>
+  {% endif %}
   {% assign gallery = site.static_files | where: "image", true | where_exp: "f", "f.path contains '/gallery/'" %}
   {% assign albums = '' | split: ',' %}
   {% for image in gallery %}
@@ -58,7 +66,7 @@ layout: default
       {% assign albums = albums | push: folder %}
     {% endunless %}
   {% endfor %}
-  {% assign portrait_images = site.static_files | where_exp: "f", "f.path contains '24635392608_1673b6bfd4_o.jpg'" %}
+  {% assign portrait_images = site.static_files | where_exp: "f", "f.path contains '/gallery/Portrait/24635392608_1673b6bfd4_o.jpg'" %}
   {% assign portrait_image = portrait_images | first %}
   {% if portrait_image %}
     {% unless albums contains 'Portrait' %}
