@@ -50,7 +50,7 @@ layout: default
 
   <!-- Thumbnail -->
  <section id="thumbnails">
-  {% assign accueil_images = site.static_files | where_exp: "f", "f.path contains '/Accueil/24635392608_1673b6bfd4_o.jpg'" %}
+  {% assign accueil_images = site.static_files | where_exp: "f", "f.path contains '/Accueil/'" | where_exp: "f", "f.extname == '.jpg' or f.extname == '.jpeg' or f.extname == '.png' or f.extname == '.webp'" %}
   {% assign accueil_image = accueil_images | first %}
   {% if accueil_image %}
     <div class="private-category">
