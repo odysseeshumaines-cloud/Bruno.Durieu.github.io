@@ -1199,10 +1199,14 @@
 			}
 
 				#viewer .slide .caption h2, #viewer .slide .caption h3, #viewer .slide .caption h4, #viewer .slide .caption h5, #viewer .slide .caption h6 {
-					color: #fff;
+					color: rgba(180, 180, 180, 0.65);
 				}
 
-			#viewer .slide .image {
+				#viewer .slide .caption-toggle {
+					display: none;
+				}
+
+				#viewer .slide .image {
 				-moz-transition: opacity 0.5s ease-in-out;
 				-webkit-transition: opacity 0.5s ease-in-out;
 				-ms-transition: opacity 0.5s ease-in-out;
@@ -1281,18 +1285,38 @@
 
 				#viewer .slide .image {
 					background-size: contain;
-					height: 60%;
+					height: 100%;
 					background-position: center top;
 				}
 
 				#viewer .slide .caption {
-					top: 60%;
+					display: none;
 					bottom: 0;
+					top: auto;
+					max-height: 60%;
 					overflow-y: auto;
 					background-image: none;
 					background-color: rgba(16, 16, 16, 0.96);
 					padding: 1em 1.25em 0.1em;
 					color: rgba(255, 255, 255, 0.85);
+				}
+
+				#viewer .slide.caption-visible .caption {
+					display: block;
+				}
+
+				#viewer .slide .caption-toggle {
+					display: block;
+					position: absolute;
+					top: 1em;
+					left: 1em;
+					padding: 0.6em 0.9em;
+					border: 0;
+					border-radius: 4px;
+					background: rgba(16, 16, 16, 0.8);
+					color: #fff;
+					cursor: pointer;
+					z-index: 3;
 				}
 
 				#viewer .inner .toggle {

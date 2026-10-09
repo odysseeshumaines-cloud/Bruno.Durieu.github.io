@@ -136,8 +136,12 @@
 				z-index: 1;
 
 				h2, h3, h4, h5, h6 {
-					color: #fff;
+					color: rgba(180,180,180,0.65);
 				}
+			}
+
+			.caption-toggle {
+				display: none;
 			}
 
 			.image {
@@ -214,18 +218,40 @@
 			.slide {
 				.image {
 					background-size: contain;
-					height: 60%;
+					height: 100%;
 					background-position: center top;
 				}
 
 				.caption {
-					top: 60%;
+					display: none;
 					bottom: 0;
+					top: auto;
+					max-height: 60%;
 					overflow-y: auto;
 					background-image: none;
 					background-color: rgba(16,16,16,0.96);
 					@include padding(1em, 1.25em);
 					color: rgba(255,255,255,0.85);
+				}
+
+				&.caption-visible {
+					.caption {
+						display: block;
+					}
+				}
+
+				.caption-toggle {
+					display: block;
+					position: absolute;
+					top: 1em;
+					left: 1em;
+					padding: 0.6em 0.9em;
+					border: 0;
+					border-radius: _size(border-radius);
+					background: rgba(16,16,16,0.8);
+					color: #fff;
+					cursor: pointer;
+					z-index: 3;
 				}
 			}
 

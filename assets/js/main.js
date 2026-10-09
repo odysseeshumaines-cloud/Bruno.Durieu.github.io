@@ -219,8 +219,24 @@ var main = (function($) { var _ = {
 
 		// Viewer.
 
+			_.$viewer.on('click', '.caption-toggle', function(event) {
+				event.preventDefault();
+				event.stopPropagation();
+
+				var $button = $(this),
+					$slide = $button.closest('.slide'),
+					isVisible = $slide.toggleClass('caption-visible').hasClass('caption-visible');
+
+				$button
+					.attr('aria-expanded', isVisible)
+					.text(isVisible ? 'Masquer le texte' : 'Afficher le texte');
+			});
+
 			// Hide main wrapper on tap (<= medium only).
-				_.$viewer.on('touchend', function() {
+				_.$viewer.on('touchend', function(event) {
+
+					if ($(event.target).closest('.caption-toggle').length)
+						return;
 
 					if (skel.breakpoint('medium').active)
 						_.hide();
@@ -454,6 +470,11 @@ var main = (function($) { var _ = {
 							// Move everything *except* the thumbnail itself to the caption.
 								$this.children().not($thumbnail)
 									.appendTo(s.$slideCaption);
+
+							if (s.$slideCaption.find('p').length > 0) {
+								$('<button type="button" class="caption-toggle" aria-expanded="false">Afficher le texte</button>')
+									.appendTo(s.$slide);
+							}
 
 					// Preload?
 						if (_.settings.preload) {
