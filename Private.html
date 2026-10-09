@@ -65,7 +65,7 @@ layout: default
           {% if category_gallery.size > 0 %}
             {% for image in category_gallery %}
             <article>
-              <a class="thumbnail" href="{{ image.path | relative_url }}" data-position="{{ site.thumbnail_position }}"><img src="{{ image.path | relative_url }}" alt="{{ image.basename }}" /></a>
+              <a class="thumbnail" data-image-url="{{ image.path | relative_url }}" data-position="{{ site.thumbnail_position }}"><img alt="{{ image.basename }}" /></a>
               <h2>{{ image.basename | replace: "_", " " }}</h2>
             </article>
             {% endfor %}
@@ -90,7 +90,7 @@ layout: default
           {% for image in private_gallery %}
             {% unless image.path contains '/Cosplay/' or image.path contains '/Nature/' or image.path contains '/Piscine/' or image.path contains '/Studio/' or image.path contains '/Urbex/' or image.path contains '/Urbanisme/' %}
             <article>
-              <a class="thumbnail" href="{{ image.path | relative_url }}" data-position="{{ site.thumbnail_position }}"><img src="{{ image.path | relative_url }}" alt="{{ image.basename }}" /></a>
+              <a class="thumbnail" data-image-url="{{ image.path | relative_url }}" data-position="{{ site.thumbnail_position }}"><img alt="{{ image.basename }}" /></a>
               <h2>{{ image.basename | replace: "_", " " }}</h2>
             </article>
             {% endunless %}
@@ -124,6 +124,12 @@ layout: default
         if (passwordInput.value === 'Valnor') {
           form.hidden = true;
           document.body.classList.remove('private-locked');
+          thumbnails.querySelectorAll('a.thumbnail[data-image-url]').forEach(function(thumbnail) {
+            var imageUrl = thumbnail.getAttribute('data-image-url');
+            thumbnail.setAttribute('href', imageUrl);
+            thumbnail.querySelector('img').setAttribute('src', imageUrl);
+            thumbnail.removeAttribute('data-image-url');
+          });
           thumbnails.style.removeProperty('display');
           message.textContent = '';
           return;

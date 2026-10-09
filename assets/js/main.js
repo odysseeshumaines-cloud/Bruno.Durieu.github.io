@@ -422,7 +422,7 @@ var main = (function($) { var _ = {
 							$slide: null,
 							$slideImage: null,
 							$slideCaption: null,
-							url: $thumbnail.attr('href'),
+							url: $thumbnail.attr('href') || $thumbnail.data('image-url'),
 							loaded: false
 						};
 
