@@ -36,6 +36,9 @@ social:
   # Your email address.
   email: "bruno.durieu@gmail.com"
 
+# Formspree endpoint for the moderated guestbook.
+guestbook_form_endpoint: "https://formspree.io/f/xvkzayrg"
+
 ## Gallery Configuration ##
 # If you modify this, also modify the `default.scope.path` key below.
 gallery_dir: "gallery"

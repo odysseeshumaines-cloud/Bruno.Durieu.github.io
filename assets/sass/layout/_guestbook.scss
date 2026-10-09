@@ -1,0 +1,45 @@
+@import '../libs/vars';
+@import '../libs/functions';
+@import '../libs/mixins';
+
+#guestbook {
+	margin: 0 auto;
+	max-width: 48em;
+	padding: 2.5em 2.25em;
+	text-align: left;
+
+	h3,
+	h4 {
+		text-align: center;
+	}
+
+	.guestbook__entries {
+		margin: 2em 0;
+	}
+
+	.guestbook__entry {
+		border-top: solid _size(border-width) _palette(border);
+		padding: 1.25em 0;
+
+		&:last-child {
+			border-bottom: solid _size(border-width) _palette(border);
+		}
+
+		h4 {
+			margin-bottom: 0.75em;
+		}
+
+		p {
+			overflow-wrap: anywhere;
+		}
+	}
+
+	.guestbook__status,
+	.guestbook__notice {
+		margin-top: 1em;
+	}
+
+	@include breakpoint(xsmall) {
+		padding: 2em 1.5em;
+	}
+}

@@ -56,6 +56,48 @@ layout: default
   {% endfor %}
 </section>
 
+  <section id="guestbook" class="guestbook">
+    <h3>Livre d’or</h3>
+    <p>Seuls les messages approuvés sont publiés. Votre adresse e-mail ne sera jamais affichée sur le site ; elle me sera transmise avec votre message.</p>
+
+    <div class="guestbook__entries">
+      {% if site.data.guestbook and site.data.guestbook.size > 0 %}
+        {% for entry in site.data.guestbook %}
+          <article class="guestbook__entry">
+            <h4>{{ entry.name | escape }}</h4>
+            <p>{{ entry.message | escape | newline_to_br }}</p>
+          </article>
+        {% endfor %}
+      {% else %}
+        <p>Aucun message publié pour le moment.</p>
+      {% endif %}
+    </div>
+
+    <h4>Laisser un message</h4>
+    {% assign guestbook_endpoint = site.guestbook_form_endpoint | default: "" %}
+    {% if guestbook_endpoint contains "https://formspree.io/f/" %}
+      <form action="{{ guestbook_endpoint | escape }}" method="POST" data-guestbook-form>
+        <div class="field">
+          <label for="guestbook-name">Votre nom</label>
+          <input id="guestbook-name" name="name" type="text" maxlength="80" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="guestbook-email">Votre adresse e-mail (privée)</label>
+          <input id="guestbook-email" name="email" type="email" maxlength="254" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="guestbook-message">Votre message</label>
+          <textarea id="guestbook-message" name="message" rows="5" maxlength="2000" required></textarea>
+        </div>
+        <input type="hidden" name="_subject" value="Nouveau message pour le livre d’or">
+        <button type="submit">Envoyer</button>
+        <p class="guestbook__status" data-guestbook-status role="status" aria-live="polite"></p>
+      </form>
+    {% else %}
+      <p class="guestbook__notice">Le formulaire sera disponible dès que son adresse Formspree aura été configurée.</p>
+    {% endif %}
+  </section>
+
   <!-- Footer -->
   <footer id="footer">
     <ul class="copyright">
