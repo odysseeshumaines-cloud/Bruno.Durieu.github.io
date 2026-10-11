@@ -53,12 +53,15 @@ layout: default
   {% assign accueil_images = site.static_files | where_exp: "f", "f.path contains '/Accueil/'" | where_exp: "f", "f.extname == '.jpg' or f.extname == '.jpeg' or f.extname == '.png' or f.extname == '.webp'" %}
   {% assign accueil_image = accueil_images | first %}
   {% if accueil_image %}
+    {% assign accueil_description = site.data.photo_descriptions[accueil_image.path] | default: "" | strip %}
     <div class="private-category">
       <h2>Accueil</h2>
       <div class="private-category-thumbnails">
         <article>
-          <a class="thumbnail" href="{{ accueil_image.path | relative_url }}" data-default-slide data-position="{{ site.thumbnail_position }}"><img src="{{ accueil_image.path | relative_url }}" alt="Accueil" /></a>
-          <h2>Accueil</h2>
+          <a class="thumbnail" href="{{ accueil_image.path | relative_url }}" data-default-slide data-position="{{ site.thumbnail_position }}"><img src="{{ accueil_image.path | relative_url }}" alt="" /></a>
+          {% if accueil_description != "" %}
+            <p>{{ accueil_description | escape | newline_to_br }}</p>
+          {% endif %}
         </article>
       </div>
     </div>
