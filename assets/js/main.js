@@ -508,6 +508,9 @@ var main = (function($) { var _ = {
 
 				});
 
+			if (_.$thumbnails.is('[data-hide-navigation]'))
+				_.$navNext.add(_.$navPrevious).hide();
+
 	},
 
 	/**
