@@ -53,11 +53,12 @@ layout: default
   {% assign accueil_images = site.static_files | where_exp: "f", "f.path contains '/Accueil/'" | where_exp: "f", "f.extname == '.jpg' or f.extname == '.jpeg' or f.extname == '.png' or f.extname == '.webp'" %}
   {% assign accueil_image = accueil_images | first %}
   {% if accueil_image %}
+    {% capture accueil_image_paths %}[{% for image in accueil_images %}{% unless forloop.first %},{% endunless %}{{ image.path | relative_url | jsonify }}{% endfor %}]{% endcapture %}
     <div class="private-category">
       <h2>Accueil</h2>
       <div class="private-category-thumbnails">
         <article>
-          <a class="thumbnail" href="{{ accueil_image.path | relative_url }}" data-default-slide data-position="{{ site.thumbnail_position }}"><img src="{{ accueil_image.path | relative_url }}" alt="" /></a>
+          <a class="thumbnail" href="{{ accueil_image.path | relative_url }}" data-default-slide data-random-href data-random-images="{{ accueil_image_paths | strip | escape }}" data-position="{{ site.thumbnail_position }}"><img src="{{ accueil_image.path | relative_url }}" alt="" /></a>
           {% include photo-description.html image=accueil_image %}
         </article>
       </div>
@@ -94,20 +95,21 @@ layout: default
   {% assign albums = ordered_albums %}
   {% for album in albums %}
     {% assign first_image = nil %}
+    {% assign album_path = '/gallery/' | append: album | append: '/' %}
+    {% assign album_images = gallery | where_exp: "f", "f.path contains album_path" %}
     {% if album == 'Portrait' and portrait_image %}
       {% assign first_image = portrait_image %}
     {% else %}
-      {% assign album_path = '/gallery/' | append: album | append: '/' %}
-      {% assign album_images = gallery | where_exp: "f", "f.path contains album_path" %}
       {% assign first_image = album_images | first %}
     {% endif %}
     {% if first_image %}
+      {% capture album_image_paths %}[{% for image in album_images %}{% unless forloop.first %},{% endunless %}{{ image.path | relative_url | jsonify }}{% endfor %}]{% endcapture %}
       {% assign album_page = album | append: '.html' %}
       <div class="private-category">
         <h2>{{ album | replace: "-", " " }}</h2>
         <div class="private-category-thumbnails">
           <article>
-            <a class="thumbnail" href="{{ album_page | relative_url }}" data-folder-link data-position="{{ site.thumbnail_position }}"><img src="{{ first_image.path | relative_url }}" alt="{{ album }}" /></a>
+            <a class="thumbnail" href="{{ album_page | relative_url }}" data-folder-link data-random-images="{{ album_image_paths | strip | escape }}" data-position="{{ site.thumbnail_position }}"><img src="{{ first_image.path | relative_url }}" alt="{{ album }}" /></a>
             <h2>{{ album | replace: "-", " " }}</h2>
           </article>
         </div>

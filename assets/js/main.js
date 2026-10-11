@@ -139,6 +139,46 @@ var main = (function($) { var _ = {
 
 	},
 
+	randomizeThumbnails: function() {
+
+		_.$thumbnails.find('a.thumbnail[data-random-images]')
+			.each(function() {
+
+				var	$thumbnail = $(this),
+					$image = $thumbnail.find('img'),
+					candidates;
+
+				try {
+					candidates = JSON.parse($thumbnail.attr('data-random-images'));
+				}
+				catch (error) {
+					console.error('Unable to parse random thumbnail images.', error);
+					return;
+				}
+
+				if (!Array.isArray(candidates)
+				||	candidates.length === 0
+				||	candidates.some(function(candidate) {
+						return typeof candidate !== 'string' || candidate.length === 0;
+					})) {
+					console.error('Random thumbnail images must be a non-empty array of paths.');
+					return;
+				}
+
+				var imageUrl = candidates[Math.floor(Math.random() * candidates.length)];
+
+				if ($image.is('[data-private-preview]'))
+					$image.attr('data-private-preview', imageUrl);
+				else
+					$image.attr('src', imageUrl);
+
+				if ($thumbnail.is('[data-random-href]'))
+					$thumbnail.attr('href', imageUrl);
+
+			});
+
+	},
+
 	/**
 	 * Initialize properties.
 	 */
@@ -150,6 +190,7 @@ var main = (function($) { var _ = {
 
 		// Thumbnails.
 			_.$thumbnails = $('#thumbnails');
+			_.randomizeThumbnails();
 
 		// Viewer.
 			_.$viewer = $(

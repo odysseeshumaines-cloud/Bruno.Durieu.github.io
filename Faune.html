@@ -76,9 +76,10 @@ layout: default
         <h2>{{ category }}</h2>
         <div class="private-category-thumbnails">
           {% if category_gallery.size > 0 %}
+            {% capture category_image_paths %}[{% for candidate in category_gallery %}{% unless forloop.first %},{% endunless %}{{ candidate.path | relative_url | jsonify }}{% endfor %}]{% endcapture %}
             {% for image in category_gallery limit: 1 %}
             <article>
-              <a class="thumbnail" href="{{ category_page | relative_url }}" data-folder-link data-position="{{ site.thumbnail_position }}"><img src="{{ image.path | relative_url }}" alt="{{ category }}" /></a>
+              <a class="thumbnail" href="{{ category_page | relative_url }}" data-folder-link data-random-images="{{ category_image_paths | strip | escape }}" data-position="{{ site.thumbnail_position }}"><img src="{{ image.path | relative_url }}" alt="{{ category }}" /></a>
             </article>
             {% endfor %}
           {% else %}
