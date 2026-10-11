@@ -90,6 +90,12 @@ var main = (function($) { var _ = {
 	current: null,
 
 	/**
+	 * Automatic slideshow timer.
+	 * @var {integer}
+	 */
+	slideshowTimer: null,
+
+	/**
 	 * Lock state.
 	 * @var {bool}
 	 */
@@ -538,23 +544,49 @@ var main = (function($) { var _ = {
 				&&	_.slides.length > 0
 				&&	!_.$body.hasClass('private-locked')) {
 					_.switchTo(defaultThumbnail.data('index'));
+					_.startSlideshow();
 					return;
 				}
 
 				if (_.slides.length > 0
 				&&	!_.$body.hasClass('private-locked')) {
 					_.switchTo(Math.floor(Math.random() * _.slides.length), true);
+					_.startSlideshow();
 					return;
 				}
 
 				skel.on('-xsmall !xsmall', function() {
 					if (_.current === null
 					&&	_.slides.length > 0
-					&&	!_.$body.hasClass('private-locked'))
+					&&	!_.$body.hasClass('private-locked')) {
 						_.switchTo(Math.floor(Math.random() * _.slides.length), true);
+						_.startSlideshow();
+					}
 				});
 
 			}, 0);
+
+	},
+
+	/**
+	 * Starts automatic slide advancement when configured on the gallery.
+	 */
+	startSlideshow: function() {
+
+		var interval = parseInt(_.$thumbnails.attr('data-slideshow'), 10);
+
+		if (!interval
+		||	interval < 1000
+		||	_.slides.length < 2
+		||	_.$body.hasClass('private-locked'))
+			return;
+
+		if (_.slideshowTimer !== null)
+			window.clearInterval(_.slideshowTimer);
+
+		_.slideshowTimer = window.setInterval(function() {
+			_.next();
+		}, interval);
 
 	},
 

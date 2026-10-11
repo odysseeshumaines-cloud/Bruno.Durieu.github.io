@@ -47,14 +47,13 @@ layout: default
   </header>
 
   <!-- Thumbnails -->
-  <section id="thumbnails">
-    {% assign faune_images = site.static_files | where: "image", true | where_exp: "f", "f.path contains '/gallery/Faune/' or f.path contains '/gallery/Mammiferes/' or f.path contains '/gallery/Oiseaux/'" | shuffle %}
-    {% if faune_images.size > 0 %}
-      {% assign first_faune_image = faune_images | first %}
-      <article>
-        <a class="thumbnail" href="{{ first_faune_image.path | relative_url }}" data-default-slide data-position="{{ site.thumbnail_position }}"><img src="{{ first_faune_image.path | relative_url }}" alt="" /></a>
+  <section id="thumbnails" data-slideshow="5000">
+    {% assign faune_images = site.static_files | where: "image", true | where_exp: "f", "f.path contains '/gallery/Faune/' or f.path contains '/gallery/Mammiferes/' or f.path contains '/gallery/Oiseaux/'" %}
+    {% for image in faune_images %}
+      <article style="display: none;">
+        <a class="thumbnail" href="{{ image.path | relative_url }}" data-position="{{ site.thumbnail_position }}"><img src="{{ image.path | relative_url }}" alt="" /></a>
       </article>
-    {% endif %}
+    {% endfor %}
     {% assign faune_categories = "Faune autres,Mammiferes,Oiseaux" | split: "," %}
     {% for category in faune_categories %}
       {% case category %}

@@ -54,7 +54,7 @@ layout: default
   </header>
 
   <!-- Thumbnail -->
-  <section id="thumbnails" style="display: none;">
+  <section id="thumbnails" style="display: none;" data-slideshow="5000">
     <div id="private-folders">
       {% for category in private_categories %}
         {% assign category_path = '/gallery/Private/' | append: category | append: '/' %}
@@ -199,6 +199,7 @@ layout: default
           if (window.main && typeof window.main.slides !== 'undefined' && window.main.slides.length > 0) {
             window.setTimeout(function() {
               window.main.switchTo(Math.floor(Math.random() * window.main.slides.length), true);
+              window.main.startSlideshow();
             }, 100);
           }
           return;
