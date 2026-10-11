@@ -233,6 +233,8 @@ var main = (function($) { var _ = {
 					$slide = $button.closest('.slide'),
 					isVisible = $slide.toggleClass('caption-visible').hasClass('caption-visible');
 
+				$slide.find('.photo-description').prop('open', isVisible);
+
 				$button
 					.attr('aria-expanded', isVisible)
 					.text(isVisible ? 'Masquer le texte' : 'Afficher le texte');

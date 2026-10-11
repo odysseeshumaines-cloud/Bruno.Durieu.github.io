@@ -52,6 +52,7 @@ layout: default
     {% for image in faune_images %}
       <article style="display: none;">
         <a class="thumbnail" href="{{ image.path | relative_url }}" data-position="{{ site.thumbnail_position }}"><img src="{{ image.path | relative_url }}" alt="" /></a>
+        {% include photo-description.html image=image %}
       </article>
     {% endfor %}
     {% assign faune_categories = "Faune autres,Mammiferes,Oiseaux" | split: "," %}
