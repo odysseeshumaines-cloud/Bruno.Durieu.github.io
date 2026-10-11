@@ -477,7 +477,7 @@ var main = (function($) { var _ = {
 								$this.children().not($thumbnail)
 									.appendTo(s.$slideCaption);
 
-							if (s.$slideCaption.find('p').length > 0) {
+							if (s.$slideCaption.find('p, .photo-description').length > 0) {
 								$('<button type="button" class="caption-toggle" aria-expanded="false">Afficher le texte</button>')
 									.appendTo(s.$slide);
 							}
