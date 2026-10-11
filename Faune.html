@@ -72,7 +72,6 @@ layout: default
             {% for image in category_gallery limit: 1 %}
             <article>
               <a class="thumbnail" href="{{ category_page | relative_url }}" data-folder-link data-position="{{ site.thumbnail_position }}"><img src="{{ image.path | relative_url }}" alt="{{ category }}" /></a>
-              <h2>{{ image.basename | replace: "_", " " }}</h2>
             </article>
             {% endfor %}
           {% else %}
