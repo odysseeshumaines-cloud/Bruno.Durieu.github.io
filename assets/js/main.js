@@ -541,11 +541,17 @@ var main = (function($) { var _ = {
 					return;
 				}
 
+				if (_.slides.length > 0
+				&&	!_.$body.hasClass('private-locked')) {
+					_.switchTo(Math.floor(Math.random() * _.slides.length), true);
+					return;
+				}
+
 				skel.on('-xsmall !xsmall', function() {
 					if (_.current === null
 					&&	_.slides.length > 0
 					&&	!_.$body.hasClass('private-locked'))
-						_.switchTo(0, true);
+						_.switchTo(Math.floor(Math.random() * _.slides.length), true);
 				});
 
 			}, 0);

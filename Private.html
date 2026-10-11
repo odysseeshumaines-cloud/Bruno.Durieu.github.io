@@ -196,6 +196,11 @@ layout: default
           thumbnails.style.removeProperty('display');
           folderPicker.hidden = false;
           message.textContent = '';
+          if (window.main && typeof window.main.slides !== 'undefined' && window.main.slides.length > 0) {
+            window.setTimeout(function() {
+              window.main.switchTo(Math.floor(Math.random() * window.main.slides.length), true);
+            }, 100);
+          }
           return;
         }
 
