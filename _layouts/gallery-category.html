@@ -6,6 +6,9 @@ layout: default
   <header id="header">
     <h1>{{ site.header }}</h1>
     <h2>{{ site.subheader }}</h2>
+    {% if page.gallery_folder contains 'Faune/' or page.gallery_path contains 'Faune/' %}
+      <p><a href="{{ '/Faune.html' | relative_url }}">Retour à Faune</a></p>
+    {% endif %}
     <p>
       <a href="{{ '/' | relative_url }}">Accueil</a> |
       <a href="{{ '/Concerts-et-Spectacles.html' | relative_url }}">Concerts et Spectacles</a> |

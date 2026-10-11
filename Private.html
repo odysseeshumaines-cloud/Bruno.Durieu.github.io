@@ -17,6 +17,7 @@ layout: default
     </form>
     {% assign private_categories = "Cosplay,Nature,Piscine,Studio,Urbanisme,Urbex" | split: "," %}
     <nav class="private-category-nav" aria-label="Sous-rubriques privées">
+      <a href="#private-folders" data-private-back>Retour aux sous-dossiers</a>
       {% for category in private_categories %}
         <a href="#private-{{ category | slugify }}">{{ category }}</a>
       {% endfor %}
@@ -139,11 +140,25 @@ layout: default
         folder.scrollIntoView();
       }
 
+      function showPrivateFolders() {
+        thumbnails.querySelectorAll('[data-private-gallery]').forEach(function(gallery) {
+          gallery.hidden = true;
+        });
+        folderPicker.hidden = false;
+        folderPicker.scrollIntoView();
+      }
+
       categoryNav.addEventListener('click', function(event) {
         if (!form.hidden) {
           event.preventDefault();
           message.textContent = 'Saisissez le mot de passe pour accéder aux photos.';
           passwordInput.focus();
+          return;
+        }
+
+        if (event.target.closest('[data-private-back]')) {
+          event.preventDefault();
+          showPrivateFolders();
           return;
         }
 
@@ -169,11 +184,7 @@ layout: default
 
         if (event.target.closest('[data-private-back]')) {
           event.preventDefault();
-          thumbnails.querySelectorAll('[data-private-gallery]').forEach(function(gallery) {
-            gallery.hidden = true;
-          });
-          folderPicker.hidden = false;
-          folderPicker.scrollIntoView();
+          showPrivateFolders();
         }
       });
 
