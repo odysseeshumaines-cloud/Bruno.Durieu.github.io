@@ -83,6 +83,10 @@
 		left: 0.5em;
 		bottom: 0.5em;
 		width: calc(100vw - 1em);
+
+		&.is-collapsed {
+			width: auto;
+		}
 	}
 }
 

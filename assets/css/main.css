@@ -1581,6 +1581,10 @@
 			bottom: 0.5em;
 			width: calc(100vw - 1em);
 		}
+
+		.album-music.is-collapsed {
+			width: auto;
+		}
 	}
 
 	body.private-locked .album-music {
