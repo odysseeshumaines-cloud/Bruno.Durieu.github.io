@@ -22,6 +22,13 @@
 		text-align: left;
 	}
 
+	#album-music-toggle-icon {
+		width: 1.25em;
+		height: 1.25em;
+		fill: currentColor;
+		vertical-align: middle;
+	}
+
 	#album-music-controls[hidden] {
 		display: none;
 	}
@@ -63,6 +70,13 @@
 	&.is-collapsed {
 		width: auto;
 		padding: 0.35em;
+
+		> button {
+			width: auto;
+			min-width: 2.25em;
+			padding: 0.5em;
+			text-align: center;
+		}
 	}
 
 	@include breakpoint(xsmall) {

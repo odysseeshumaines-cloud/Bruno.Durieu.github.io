@@ -1518,6 +1518,13 @@
 			text-align: left;
 		}
 
+		.album-music #album-music-toggle-icon {
+			width: 1.25em;
+			height: 1.25em;
+			fill: currentColor;
+			vertical-align: middle;
+		}
+
 		.album-music #album-music-controls[hidden] {
 			display: none;
 		}
@@ -1560,6 +1567,13 @@
 			width: auto;
 			padding: 0.35em;
 		}
+
+			.album-music.is-collapsed > button {
+				width: auto;
+				min-width: 2.25em;
+				padding: 0.5em;
+				text-align: center;
+			}
 
 	@media screen and (max-width: 480px) {
 		.album-music {

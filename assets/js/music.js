@@ -7,19 +7,25 @@
 	var credit = document.getElementById('album-music-credit');
 	var status = document.getElementById('album-music-status');
 	var toggle = document.getElementById('album-music-toggle');
+	var toggleLabel = document.getElementById('album-music-toggle-label');
+	var toggleIcon = document.getElementById('album-music-toggle-icon');
 	var controls = document.getElementById('album-music-controls');
 	var minimumTrackDuration = 150;
 
-	if (!player || !trackSelect || !audio || !credit || !status || !toggle || !controls)
+	if (!player || !trackSelect || !audio || !credit || !status || !toggle
+		|| !toggleLabel || !toggleIcon || !controls)
 		return;
 
 	toggle.addEventListener('click', function() {
 		var expanded = toggle.getAttribute('aria-expanded') === 'true';
 
 		toggle.setAttribute('aria-expanded', String(!expanded));
-		toggle.textContent = expanded
+		var label = expanded
 			? 'Afficher le lecteur musical'
 			: 'Masquer le lecteur musical';
+		toggle.setAttribute('aria-label', label);
+		toggleLabel.hidden = expanded;
+		toggleIcon.hidden = !expanded;
 		controls.hidden = expanded;
 		player.classList.toggle('is-collapsed', expanded);
 	});

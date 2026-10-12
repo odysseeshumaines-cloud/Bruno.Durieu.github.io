@@ -1,6 +1,11 @@
 {% assign album_tracks = site.data.album_music.albums[page.url] | default: site.data.album_music.default %}
 <aside id="album-music" class="album-music" aria-label="Lecteur musical">
-  <button id="album-music-toggle" type="button" aria-expanded="true" aria-controls="album-music-controls">Masquer le lecteur musical</button>
+  <button id="album-music-toggle" type="button" aria-expanded="true" aria-controls="album-music-controls" aria-label="Masquer le lecteur musical">
+    <span id="album-music-toggle-label">Masquer le lecteur musical</span>
+    <svg id="album-music-toggle-icon" hidden aria-hidden="true" viewBox="0 0 24 24" focusable="false">
+      <path d="M3 9v6h4l5 4V5L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4.03v8.05a4.5 4.5 0 0 0 2.5-4.02zM14 3.23v2.06a7 7 0 0 1 0 13.42v2.06a9 9 0 0 0 0-17.54z"></path>
+    </svg>
+  </button>
   <div id="album-music-controls">
     <label for="album-music-track">Ambiance musicale</label>
     <select id="album-music-track">
