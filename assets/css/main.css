@@ -1510,6 +1510,18 @@
 		text-align: left;
 	}
 
+		.album-music > button {
+			width: 100%;
+			padding: 0.5em;
+			background: transparent;
+			color: #fff;
+			text-align: left;
+		}
+
+		.album-music #album-music-controls[hidden] {
+			display: none;
+		}
+
 		.album-music label,
 		.album-music select,
 		.album-music audio,
@@ -1544,10 +1556,19 @@
 			font-size: 0.75em;
 		}
 
+		.album-music.is-collapsed {
+			width: auto;
+			padding: 0.35em;
+		}
+
 	@media screen and (max-width: 480px) {
 		.album-music {
 			left: 0.5em;
 			bottom: 0.5em;
 			width: calc(100vw - 1em);
 		}
+	}
+
+	body.private-locked .album-music {
+		display: none;
 	}

@@ -55,10 +55,16 @@ tracks:
     creator: "felix.blume"
     source: "https://freesound.org/people/felix.blume/sounds/219317"
     duration: 300.181
+  private-funk:
+    label: "Funk instrumental - groove moderne (2 min 36)"
+    file: "private-funk.mp3"
+    title: "instrumental 2.mp3"
+    creator: "Prime45"
+    source: "https://freesound.org/people/Prime45/sounds/506014"
+    duration: 155.69
 
 default:
   - piano
-  - greek-taverna
   - mariachi
   - rock
 
@@ -66,18 +72,23 @@ albums:
   "/Faune.html":
     - forest-birds
     - rainforest-rain
+    - piano
   "/Faune-autres.html":
     - forest-birds
     - rainforest-rain
+    - piano
   "/Mammiferes.html":
     - forest-birds
     - rainforest-rain
+    - piano
   "/Oiseaux.html":
     - forest-birds
     - rainforest-rain
+    - piano
   "/Paysages.html":
     - piano
     - piano-long
+    - forest-birds
   "/Portrait.html":
     - rock
     - greek-taverna
@@ -85,6 +96,12 @@ albums:
   "/Urbanisme.html":
     - city-street
     - mariachi
+    - rock
   "/Rue.html":
     - greek-taverna
+    - mariachi
+    - rock
+  "/Private.html":
+    - private-funk
+    - rock
     - mariachi

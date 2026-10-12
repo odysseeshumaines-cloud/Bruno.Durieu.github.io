@@ -14,6 +14,18 @@
 	color: #fff;
 	text-align: left;
 
+	> button {
+		width: 100%;
+		padding: 0.5em;
+		background: transparent;
+		color: #fff;
+		text-align: left;
+	}
+
+	#album-music-controls[hidden] {
+		display: none;
+	}
+
 	label,
 	select,
 	audio,
@@ -48,9 +60,18 @@
 		font-size: 0.75em;
 	}
 
+	&.is-collapsed {
+		width: auto;
+		padding: 0.35em;
+	}
+
 	@include breakpoint(xsmall) {
 		left: 0.5em;
 		bottom: 0.5em;
 		width: calc(100vw - 1em);
 	}
+}
+
+body.private-locked .album-music {
+	display: none;
 }
