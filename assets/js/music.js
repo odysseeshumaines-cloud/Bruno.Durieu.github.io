@@ -6,6 +6,7 @@
 	var audio = document.getElementById('album-music-audio');
 	var credit = document.getElementById('album-music-credit');
 	var status = document.getElementById('album-music-status');
+	var minimumTrackDuration = 150;
 
 	if (!player || !trackSelect || !audio || !credit || !status)
 		return;
@@ -32,6 +33,12 @@
 	trackSelect.addEventListener('change', selectTrack);
 	audio.addEventListener('error', function() {
 		status.textContent = 'Impossible de charger ce morceau pour le moment.';
+	});
+	audio.addEventListener('loadedmetadata', function() {
+		if (audio.duration < minimumTrackDuration) {
+			audio.pause();
+			status.textContent = 'Ce morceau dure moins de 2 min 30 et ne peut pas être lu.';
+		}
 	});
 	audio.addEventListener('playing', function() {
 		status.textContent = '';

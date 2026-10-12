@@ -1,69 +1,90 @@
 tracks:
-  nature:
-    label: "Nature - chants d’oiseaux"
-    file: "faune-oiseaux.mp3"
-    title: "Birds In Spring (Scotland)"
-    creator: "BurghRecords"
-    source: "https://freesound.org/people/BurghRecords/sounds/463903"
-  zen:
-    label: "Zen - piano méditatif"
-    file: "zen-piano.mp3"
-    title: "s piano loop.flac"
-    creator: "arseniiv"
-    source: "https://freesound.org/people/arseniiv/sounds/241862"
-  urban:
-    label: "Ambiance urbaine - musique électronique"
-    file: "urban-ambiance.mp3"
-    title: "Outside an urban rave"
-    creator: "OSFX"
-    source: "https://freesound.org/people/OSFX/sounds/410592"
-  popular:
-    label: "Populaire - guitare folk"
-    file: "rue-folk.mp3"
-    title: "Folk Guitar Music Track"
-    creator: "Dvideoguy"
-    source: "https://freesound.org/people/Dvideoguy/sounds/246315"
-  disco:
-    label: "Disco - funk"
-    file: "portrait-disco.mp3"
-    title: "FUNK!!!!!!.wav"
-    creator: "FrankyBoomer"
-    source: "https://freesound.org/people/FrankyBoomer/sounds/250728"
-  dance:
-    label: "Dance - electro-pop"
-    file: "portrait-dance.mp3"
-    title: "electro-pop 01 loop"
-    creator: "frankum"
-    source: "https://freesound.org/people/frankum/sounds/208520"
+  forest-birds:
+    label: "Nature - oiseaux en forêt (7 min 40)"
+    file: "forest-birds.mp3"
+    title: "Early Summer birds, forest ambience"
+    creator: "TRP"
+    source: "https://freesound.org/people/TRP/sounds/567908"
+    duration: 460
+  rainforest-rain:
+    label: "Nature - pluie en forêt tropicale (4 min)"
+    file: "rainforest-rain.mp3"
+    title: "Rain Sound and Rainforest.mp3"
+    creator: "INNORECORDS"
+    source: "https://freesound.org/people/INNORECORDS/sounds/457447"
+    duration: 240.079
+  piano:
+    label: "Zen - piano improvisé (2 min 39)"
+    file: "piano-improvisation.mp3"
+    title: "Piano improvisation 2"
+    creator: "unfa"
+    source: "https://freesound.org/people/unfa/sounds/213242"
+    duration: 158.918
+  piano-long:
+    label: "Zen - longue improvisation au piano (20 min 28)"
+    file: "piano-improvisation-long.mp3"
+    title: "piano_improvB_1_2_2011.wav"
+    creator: "soundathon"
+    source: "https://freesound.org/people/soundathon/sounds/111491"
+    duration: 1227.78
+  city-street:
+    label: "Ambiance urbaine - rue animée (3 min 19)"
+    file: "city-street.mp3"
+    title: "citystreet3.wav"
+    creator: "sagetyrtle"
+    source: "https://freesound.org/people/sagetyrtle/sounds/36734"
+    duration: 198.661
+  greek-taverna:
+    label: "Musique populaire - taverne grecque (2 min 48)"
+    file: "greek-taverna.mp3"
+    title: "Music in Greek taverna"
+    creator: "nickcase"
+    source: "https://freesound.org/people/nickcase/sounds/553168"
+    duration: 167.46
   rock:
-    label: "Rock"
-    file: "portrait-rock.mp3"
-    title: "strong rock.mp3"
-    creator: "feveran"
-    source: "https://freesound.org/people/feveran/sounds/47538"
+    label: "Rock and roll (3 min 31)"
+    file: "rock-and-roll.mp3"
+    title: "Royalty Free Rock N Roll.wav"
+    creator: "Geoff-Bremner-Audio"
+    source: "https://freesound.org/people/Geoff-Bremner-Audio/sounds/683092"
+    duration: 211.19
+  mariachi:
+    label: "Mariachis en direct - musique populaire (5 min)"
+    file: "mexican-mariachi.mp3"
+    title: "Mexican Mariachis playing 'las mañanitas' on the square Garibaldi in Mexico City"
+    creator: "felix.blume"
+    source: "https://freesound.org/people/felix.blume/sounds/219317"
+    duration: 300.181
 
 default:
-  - zen
-  - dance
-  - popular
+  - piano
+  - greek-taverna
+  - mariachi
   - rock
 
 albums:
   "/Faune.html":
-    - nature
+    - forest-birds
+    - rainforest-rain
   "/Faune-autres.html":
-    - nature
+    - forest-birds
+    - rainforest-rain
   "/Mammiferes.html":
-    - nature
+    - forest-birds
+    - rainforest-rain
   "/Oiseaux.html":
-    - nature
+    - forest-birds
+    - rainforest-rain
   "/Paysages.html":
-    - zen
+    - piano
+    - piano-long
   "/Portrait.html":
-    - disco
-    - dance
     - rock
+    - greek-taverna
+    - mariachi
   "/Urbanisme.html":
-    - urban
+    - city-street
+    - mariachi
   "/Rue.html":
-    - popular
+    - greek-taverna
+    - mariachi
