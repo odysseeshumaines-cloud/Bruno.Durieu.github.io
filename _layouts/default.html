@@ -12,6 +12,11 @@
 <body class="is-loading-0 is-loading-1 is-loading-2">
   {{ content }}
 
+  {% assign music_excluded_pages = '/,/Private.html,/Private-source.html' | split: ',' %}
+  {% unless music_excluded_pages contains page.url %}
+    {% include album-music.html %}
+  {% endunless %}
+
   {% include scripts.html %}
 </body>
 </html>

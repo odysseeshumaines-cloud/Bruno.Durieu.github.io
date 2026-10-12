@@ -1,0 +1,69 @@
+tracks:
+  nature:
+    label: "Nature - chants d’oiseaux"
+    file: "faune-oiseaux.mp3"
+    title: "Birds In Spring (Scotland)"
+    creator: "BurghRecords"
+    source: "https://freesound.org/people/BurghRecords/sounds/463903"
+  zen:
+    label: "Zen - piano méditatif"
+    file: "zen-piano.mp3"
+    title: "s piano loop.flac"
+    creator: "arseniiv"
+    source: "https://freesound.org/people/arseniiv/sounds/241862"
+  urban:
+    label: "Ambiance urbaine - musique électronique"
+    file: "urban-ambiance.mp3"
+    title: "Outside an urban rave"
+    creator: "OSFX"
+    source: "https://freesound.org/people/OSFX/sounds/410592"
+  popular:
+    label: "Populaire - guitare folk"
+    file: "rue-folk.mp3"
+    title: "Folk Guitar Music Track"
+    creator: "Dvideoguy"
+    source: "https://freesound.org/people/Dvideoguy/sounds/246315"
+  disco:
+    label: "Disco - funk"
+    file: "portrait-disco.mp3"
+    title: "FUNK!!!!!!.wav"
+    creator: "FrankyBoomer"
+    source: "https://freesound.org/people/FrankyBoomer/sounds/250728"
+  dance:
+    label: "Dance - electro-pop"
+    file: "portrait-dance.mp3"
+    title: "electro-pop 01 loop"
+    creator: "frankum"
+    source: "https://freesound.org/people/frankum/sounds/208520"
+  rock:
+    label: "Rock"
+    file: "portrait-rock.mp3"
+    title: "strong rock.mp3"
+    creator: "feveran"
+    source: "https://freesound.org/people/feveran/sounds/47538"
+
+default:
+  - zen
+  - dance
+  - popular
+  - rock
+
+albums:
+  "/Faune.html":
+    - nature
+  "/Faune-autres.html":
+    - nature
+  "/Mammiferes.html":
+    - nature
+  "/Oiseaux.html":
+    - nature
+  "/Paysages.html":
+    - zen
+  "/Portrait.html":
+    - disco
+    - dance
+    - rock
+  "/Urbanisme.html":
+    - urban
+  "/Rue.html":
+    - popular

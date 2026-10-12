@@ -1,0 +1,18 @@
+{% assign album_tracks = site.data.album_music.albums[page.url] | default: site.data.album_music.default %}
+<aside id="album-music" class="album-music" aria-label="Lecteur musical">
+  <label for="album-music-track">Ambiance musicale</label>
+  <select id="album-music-track">
+    {% for track_id in album_tracks %}
+      {% assign track = site.data.album_music.tracks[track_id] %}
+      <option
+        value="{{ '/assets/music/' | append: track.file | relative_url }}"
+        data-title="{{ track.title | escape }}"
+        data-creator="{{ track.creator | escape }}"
+        data-source="{{ track.source | escape }}"
+        {% if forloop.first %}selected{% endif %}>{{ track.label | escape }}</option>
+    {% endfor %}
+  </select>
+  <audio id="album-music-audio" controls loop preload="none"></audio>
+  <a id="album-music-credit" href="#" target="_blank" rel="noopener noreferrer">Crédits musique (CC0)</a>
+  <p id="album-music-status" role="status" aria-live="polite"></p>
+</aside>

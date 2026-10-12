@@ -103,6 +103,8 @@
 
 		}
 
+
+
 		@media screen and (max-width: 1280px) {
 
 			html {
@@ -1494,3 +1496,58 @@
 				}
 
 		}
+
+	.album-music {
+		position: fixed;
+		left: 1em;
+		bottom: 1em;
+		z-index: 10001;
+		width: 22em;
+		max-width: calc(100vw - 2em);
+		padding: 0.75em;
+		background: rgba(16, 16, 16, 0.9);
+		color: #fff;
+		text-align: left;
+	}
+
+		.album-music label,
+		.album-music select,
+		.album-music audio,
+		.album-music #album-music-credit {
+			display: block;
+			width: 100%;
+		}
+
+		.album-music label {
+			margin-bottom: 0.4em;
+			color: #fff;
+			font-weight: 700;
+		}
+
+		.album-music select {
+			margin-bottom: 0.5em;
+		}
+
+		.album-music audio {
+			height: 2.5em;
+		}
+
+		.album-music #album-music-credit {
+			margin-top: 0.4em;
+			color: #fff;
+			font-size: 0.75em;
+		}
+
+		.album-music #album-music-status {
+			margin: 0.25em 0 0;
+			color: #fff;
+			font-size: 0.75em;
+		}
+
+	@media screen and (max-width: 480px) {
+		.album-music {
+			left: 0.5em;
+			bottom: 0.5em;
+			width: calc(100vw - 1em);
+		}
+	}

@@ -1,0 +1,56 @@
+@import '../libs/vars';
+@import '../libs/functions';
+@import '../libs/mixins';
+
+.album-music {
+	position: fixed;
+	left: 1em;
+	bottom: 1em;
+	z-index: (_misc(z-index-base) + 1);
+	width: 22em;
+	max-width: calc(100vw - 2em);
+	padding: 0.75em;
+	background: rgba(16, 16, 16, 0.9);
+	color: #fff;
+	text-align: left;
+
+	label,
+	select,
+	audio,
+	#album-music-credit {
+		display: block;
+		width: 100%;
+	}
+
+	label {
+		margin-bottom: 0.4em;
+		color: #fff;
+		font-weight: _font(weight-bold);
+	}
+
+	select {
+		margin-bottom: 0.5em;
+	}
+
+	audio {
+		height: 2.5em;
+	}
+
+	#album-music-credit {
+		margin-top: 0.4em;
+		color: #fff;
+		font-size: 0.75em;
+	}
+
+	#album-music-status {
+		margin: 0.25em 0 0;
+		color: #fff;
+		font-size: 0.75em;
+	}
+
+	@include breakpoint(xsmall) {
+		left: 0.5em;
+		bottom: 0.5em;
+		width: calc(100vw - 1em);
+	}
+}
