@@ -29,6 +29,11 @@
 		vertical-align: middle;
 	}
 
+	#album-music-toggle-label[hidden],
+	#album-music-toggle-icon[hidden] {
+		display: none !important;
+	}
+
 	#album-music-controls[hidden] {
 		display: none;
 	}
