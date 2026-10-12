@@ -10,6 +10,31 @@
 
 /* Viewer */
 
+	#home-banner {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: calc(100% - #{_size(main)});
+		height: 100vh;
+		height: 100dvh;
+		background: _palette(page-bg);
+
+		img {
+			display: block;
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+
+		@include breakpoint(large) {
+			width: calc(100% - #{_size(main-alt)});
+		}
+
+		@include breakpoint(medium) {
+			width: 100%;
+		}
+	}
+
 	@include keyframes(spinner) {
 		0% {
 			@include vendor('transform', 'rotate(0deg)');

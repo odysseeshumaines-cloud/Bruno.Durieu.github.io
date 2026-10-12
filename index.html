@@ -2,6 +2,14 @@
 layout: default
 ---
 
+{% assign accueil_images = site.static_files | where_exp: "f", "f.path contains '/Accueil/'" | where_exp: "f", "f.extname == '.jpg' or f.extname == '.jpeg' or f.extname == '.png' or f.extname == '.webp'" %}
+{% assign accueil_image = accueil_images | first %}
+{% if accueil_image %}
+<div id="home-banner">
+  <img src="{{ accueil_image.path | relative_url }}" alt="Photo d’accueil" />
+</div>
+{% endif %}
+
 <!-- Main -->
 <div id="main">
   <!-- Header -->
@@ -50,20 +58,6 @@ layout: default
 
   <!-- Thumbnail -->
  <section id="thumbnails" data-hide-navigation>
-  {% assign accueil_images = site.static_files | where_exp: "f", "f.path contains '/Accueil/'" | where_exp: "f", "f.extname == '.jpg' or f.extname == '.jpeg' or f.extname == '.png' or f.extname == '.webp'" %}
-  {% assign accueil_image = accueil_images | first %}
-  {% if accueil_image %}
-    {% capture accueil_image_paths %}[{% for image in accueil_images %}{% unless forloop.first %},{% endunless %}{{ image.path | relative_url | jsonify }}{% endfor %}]{% endcapture %}
-    <div class="private-category">
-      <h2>Accueil</h2>
-      <div class="private-category-thumbnails">
-        <article>
-          <a class="thumbnail" href="{{ accueil_image.path | relative_url }}" data-default-slide data-random-href data-random-images="{{ accueil_image_paths | strip | escape }}" data-position="{{ site.thumbnail_position }}"><img src="{{ accueil_image.path | relative_url }}" alt="" /></a>
-          {% include photo-description.html image=accueil_image %}
-        </article>
-      </div>
-    </div>
-  {% endif %}
   {% assign gallery = site.static_files | where: "image", true | where_exp: "f", "f.path contains '/gallery/'" %}
   {% assign albums = '' | split: ',' %}
   {% for image in gallery %}
