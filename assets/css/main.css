@@ -1018,6 +1018,7 @@
 					text-transform: uppercase;
 					letter-spacing: 0.04em;
 					color: #fff;
+					text-align: center;
 				}
 
 				#thumbnails article .photo-description summary::-webkit-details-marker {
@@ -1036,6 +1037,7 @@
 				overflow: auto;
 				white-space: pre-line;
 				color: #fff;
+				text-align: center;
 			}
 
 			#thumbnails article h2, #thumbnails article p {
@@ -1289,6 +1291,7 @@
 						text-transform: uppercase;
 						letter-spacing: 0.04em;
 						color: #fff;
+						text-align: center;
 					}
 
 						#viewer .slide .caption .photo-description summary::-webkit-details-marker {
@@ -1307,6 +1310,7 @@
 					overflow: auto;
 					white-space: pre-line;
 					color: #fff;
+					text-align: center;
 				}
 
 				#viewer .slide .caption-toggle {

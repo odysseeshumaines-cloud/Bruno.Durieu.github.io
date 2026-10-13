@@ -190,6 +190,7 @@
 						text-transform: uppercase;
 						letter-spacing: 0.04em;
 						color: #fff;
+						text-align: center;
 
 						&::-webkit-details-marker {
 							display: none;
@@ -209,6 +210,7 @@
 					overflow: auto;
 					white-space: pre-line;
 					color: #fff;
+					text-align: center;
 				}
 
 			}
