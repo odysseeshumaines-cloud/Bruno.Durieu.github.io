@@ -7,12 +7,12 @@ tracks:
     source: "https://freesound.org/people/TRP/sounds/567908"
     duration: 460
   Relaxing-Meditation:
-    label: "Relaxing Ambient Meditation (short ver.)"
+    label: "Relaxing Ambient Meditation (version complète, 7 min 14)"
     file: "RelaxAmbMeditation.mp3"
-    title: "RelaxAmbMeditation.mp3"
+    title: "Relaxing Ambient Meditation (full version)"
     creator: "AudioCoffee"
     source: "https://freesound.org/people/AudioCoffee/sounds/718160/"
-    duration: 193.500
+    duration: 433.55
   piano:
     label: "Zen - piano improvisé (2 min 39)"
     file: "piano-improvisation.mp3"
@@ -65,7 +65,6 @@ tracks:
 
 default:
   - piano
-  - mariachi
   - rock
 
 albums:
@@ -92,16 +91,11 @@ albums:
   "/Portrait.html":
     - rock
     - greek-taverna
-    - mariachi
   "/Urbanisme.html":
-    - city-street
-    - mariachi
     - rock
   "/Rue.html":
     - greek-taverna
-    - mariachi
     - rock
   "/Private.html":
     - private-funk
     - rock
-    - mariachi

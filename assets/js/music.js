@@ -38,8 +38,7 @@
 		audio.load();
 		credit.href = option.getAttribute('data-source');
 		credit.textContent = option.getAttribute('data-title')
-			+ ' — ' + option.getAttribute('data-creator')
-			+ ' (licence CC0)';
+			+ ' — ' + option.getAttribute('data-creator');
 		status.textContent = '';
 
 		if (wasPlaying) {
