@@ -10,7 +10,7 @@
 	var toggleLabel = document.getElementById('album-music-toggle-label');
 	var toggleIcon = document.getElementById('album-music-toggle-icon');
 	var controls = document.getElementById('album-music-controls');
-	var minimumTrackDuration = 150;
+	var minimumTrackDuration = 90;
 
 	if (!player || !trackSelect || !audio || !credit || !status || !toggle
 		|| !toggleLabel || !toggleIcon || !controls)
@@ -55,7 +55,7 @@
 	audio.addEventListener('loadedmetadata', function() {
 		if (audio.duration < minimumTrackDuration) {
 			audio.pause();
-			status.textContent = 'Ce morceau dure moins de 2 min 30 et ne peut pas être lu.';
+			status.textContent = 'Ce morceau dure moins de 1 min 30 et ne peut pas être lu.';
 		}
 	});
 	audio.addEventListener('playing', function() {

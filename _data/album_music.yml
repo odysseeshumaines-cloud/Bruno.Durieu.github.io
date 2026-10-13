@@ -62,40 +62,57 @@ tracks:
     creator: "Prime45"
     source: "https://freesound.org/people/Prime45/sounds/506014"
     duration: 155.69
+  music-track-beats-1:
+    label: "Beat énergique - musique track beats 1 (1 min 39)"
+    file: "music-track-beats-1.mp3"
+    title: "music track beats 1"
+    creator: "Attia.phonatics"
+    source: "https://freesound.org/people/Attia.phonatics/sounds/829464/"
+    duration: 99.071
 
 default:
   - piano
   - rock
+  - music-track-beats-1
 
 albums:
   "/Faune.html":
     - forest-birds
     - Relaxing-Meditation
     - piano
+    - music-track-beats-1
   "/Faune-autres.html":
     - forest-birds
     - Relaxing-Meditation
     - piano
+    - music-track-beats-1
   "/Mammiferes.html":
     - forest-birds
     - Relaxing-Meditation
     - piano
+    - music-track-beats-1
   "/Oiseaux.html":
     - forest-birds
     - Relaxing-Meditation
     - piano
+    - music-track-beats-1
   "/Paysages.html":
     - piano
     - piano-long
     - forest-birds
+    - music-track-beats-1
   "/Portrait.html":
     - rock
     - greek-taverna
+    - music-track-beats-1
   "/Urbanisme.html":
     - rock
+    - music-track-beats-1
   "/Rue.html":
     - greek-taverna
     - rock
+    - music-track-beats-1
   "/Private.html":
     - private-funk
     - rock
+    - music-track-beats-1
