@@ -54,6 +54,13 @@
 
 	select {
 		margin-bottom: 0.5em;
+		color: #000;
+		background-color: #fff;
+
+		option {
+			color: #000;
+			background-color: #fff;
+		}
 	}
 
 	audio {

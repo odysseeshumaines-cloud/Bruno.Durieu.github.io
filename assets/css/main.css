@@ -1550,6 +1550,13 @@
 
 		.album-music select {
 			margin-bottom: 0.5em;
+			color: #000;
+			background-color: #fff;
+		}
+
+			.album-music select option {
+				color: #000;
+				background-color: #fff;
 		}
 
 		.album-music audio {
