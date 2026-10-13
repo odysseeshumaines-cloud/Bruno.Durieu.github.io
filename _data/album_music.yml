@@ -35,12 +35,12 @@ tracks:
     source: "https://freesound.org/people/kevp888/sounds/640471/"
     duration: 240.800
   greek-taverna:
-    label: "Musique populaire - taverne grecque"
-    file: "greek-taverna.mp3"
-    title: "Music in Greek taverna"
-    creator: "lydgutten"
-    source: "https://freesound.org/people/lydgutten/sounds/760385/"
-    duration: 1948.390
+    label: "Musique de rue - Marching band in Metzerral (3 min 35)"
+    file: "kevp888-marching-band-metzerral.mp3"
+    title: "240815_140056_FR_Marching_band_in_Metzerral"
+    creator: "kevp888"
+    source: "https://freesound.org/people/kevp888/sounds/755187/"
+    duration: 215.860
   rock:
     label: "Rock and roll (3 min 31)"
     file: "rock-and-roll.mp3"
