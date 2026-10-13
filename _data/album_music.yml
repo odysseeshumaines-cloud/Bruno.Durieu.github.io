@@ -6,13 +6,13 @@ tracks:
     creator: "TRP"
     source: "https://freesound.org/people/TRP/sounds/567908"
     duration: 460
-  rainforest-rain:
-    label: "Nature - pluie en forêt tropicale (4 min)"
-    file: "rainforest-rain.mp3"
-    title: "Rain Sound and Rainforest.mp3"
-    creator: "INNORECORDS"
-    source: "https://freesound.org/people/INNORECORDS/sounds/457447"
-    duration: 240.079
+  Relaxing-Meditation:
+    label: "Relaxing Ambient Meditation (short ver.)"
+    file: "RelaxAmbMeditation.mp3"
+    title: "RelaxAmbMeditation.mp3"
+    creator: "AudioCoffee"
+    source: "https://freesound.org/people/AudioCoffee/sounds/718160/"
+    duration: 193.500
   piano:
     label: "Zen - piano improvisé (2 min 39)"
     file: "piano-improvisation.mp3"
@@ -28,19 +28,19 @@ tracks:
     source: "https://freesound.org/people/soundathon/sounds/111491"
     duration: 1227.78
   city-street:
-    label: "Ambiance urbaine - rue animée (3 min 19)"
-    file: "city-street.mp3"
-    title: "citystreet3.wav"
-    creator: "sagetyrtle"
-    source: "https://freesound.org/people/sagetyrtle/sounds/36734"
-    duration: 198.661
+    label: "Brass band playing in the street"
+    file: "220621_2007_FR_BrassBand.mp3"
+    title: "220621_2007_FR_BrassBand.wav"
+    creator: "kevp888"
+    source: "https://freesound.org/people/kevp888/sounds/640471/"
+    duration: 240.800
   greek-taverna:
-    label: "Musique populaire - taverne grecque (2 min 48)"
+    label: "Musique populaire - taverne grecque"
     file: "greek-taverna.mp3"
     title: "Music in Greek taverna"
-    creator: "nickcase"
-    source: "https://freesound.org/people/nickcase/sounds/553168"
-    duration: 167.46
+    creator: "lydgutten"
+    source: "https://freesound.org/people/lydgutten/sounds/760385/"
+    duration: 1948.390
   rock:
     label: "Rock and roll (3 min 31)"
     file: "rock-and-roll.mp3"
@@ -50,11 +50,11 @@ tracks:
     duration: 211.19
   mariachi:
     label: "Mariachis en direct - musique populaire (5 min)"
-    file: "mexican-mariachi.mp3"
-    title: "Mexican Mariachis playing 'las mañanitas' on the square Garibaldi in Mexico City"
-    creator: "felix.blume"
-    source: "https://freesound.org/people/felix.blume/sounds/219317"
-    duration: 300.181
+    file: "Jarabe Tapatío / Mariachi.mp3"
+    title: "Jarabe Tapatío / Mariachi"
+    creator: "Lenguaverde"
+    source: "https://freesound.org/people/Lenguaverde/sounds/177304/"
+    duration: 149.983
   private-funk:
     label: "Funk instrumental - groove moderne (2 min 36)"
     file: "private-funk.mp3"
@@ -71,19 +71,19 @@ default:
 albums:
   "/Faune.html":
     - forest-birds
-    - rainforest-rain
+    - Relaxing-Meditation
     - piano
   "/Faune-autres.html":
     - forest-birds
-    - rainforest-rain
+    - Relaxing-Meditation
     - piano
   "/Mammiferes.html":
     - forest-birds
-    - rainforest-rain
+    - Relaxing-Meditation
     - piano
   "/Oiseaux.html":
     - forest-birds
-    - rainforest-rain
+    - Relaxing-Meditation
     - piano
   "/Paysages.html":
     - piano
