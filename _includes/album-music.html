@@ -19,7 +19,7 @@
           {% if forloop.first %}selected{% endif %}>{{ track.label | escape }}</option>
       {% endfor %}
     </select>
-    <audio id="album-music-audio" controls loop preload="none"></audio>
+    <audio id="album-music-audio" controls preload="none"></audio>
     <a id="album-music-credit" href="#" target="_blank" rel="noopener noreferrer">Crédits musique</a>
     <p id="album-music-status" role="status" aria-live="polite"></p>
   </div>
