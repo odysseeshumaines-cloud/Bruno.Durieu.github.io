@@ -1,11 +1,11 @@
 tracks:
-  forest-birds:
-    label: "Nature - oiseaux en forêt (7 min 40)"
-    file: "forest-birds.mp3"
-    title: "Early Summer birds, forest ambience"
-    creator: "TRP"
-    source: "https://freesound.org/people/TRP/sounds/567908"
-    duration: 460
+  humming-of-the-elves:
+    label: "Humming of the Elves (3 min 13)"
+    file: "Humming of the Elves.mp3"
+    title: "Humming of the Elves"
+    creator: "bruno_durieu"
+    source: "https://suno.com/song/b3f03e25-b37d-44a2-b34d-86adcd0dd49b"
+    duration: 192.84
   Relaxing-Meditation:
     label: "Relaxing Ambient Meditation (version complète, 7 min 14)"
     file: "RelaxAmbMeditation.mp3"
@@ -77,29 +77,29 @@ default:
 
 albums:
   "/Faune.html":
-    - forest-birds
+    - humming-of-the-elves
     - Relaxing-Meditation
     - piano
     - music-track-beats-1
   "/Faune-autres.html":
-    - forest-birds
+    - humming-of-the-elves
     - Relaxing-Meditation
     - piano
     - music-track-beats-1
   "/Mammiferes.html":
-    - forest-birds
+    - humming-of-the-elves
     - Relaxing-Meditation
     - piano
     - music-track-beats-1
   "/Oiseaux.html":
-    - forest-birds
+    - humming-of-the-elves
     - Relaxing-Meditation
     - piano
     - music-track-beats-1
   "/Paysages.html":
     - piano
     - piano-long
-    - forest-birds
+    - humming-of-the-elves
     - music-track-beats-1
   "/Portrait.html":
     - rock
