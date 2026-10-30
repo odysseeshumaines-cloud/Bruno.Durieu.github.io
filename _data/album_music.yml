@@ -102,17 +102,21 @@ albums:
     - humming-of-the-elves
     - music-track-beats-1
   "/Portrait.html":
+    - humming-of-the-elves
     - rock
     - greek-taverna
     - music-track-beats-1
   "/Urbanisme.html":
+    - humming-of-the-elves
     - rock
     - music-track-beats-1
   "/Rue.html":
+    - humming-of-the-elves
     - greek-taverna
     - rock
     - music-track-beats-1
   "/Private.html":
+    - humming-of-the-elves
     - private-funk
     - rock
     - music-track-beats-1
