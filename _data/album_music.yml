@@ -71,6 +71,7 @@ tracks:
     duration: 99.071
 
 default:
+  - humming-of-the-elves
   - piano
   - rock
   - music-track-beats-1
