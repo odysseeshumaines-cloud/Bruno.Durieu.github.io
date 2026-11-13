@@ -11,7 +11,7 @@
 	var toggleIcon = document.getElementById('album-music-toggle-icon');
 	var controls = document.getElementById('album-music-controls');
 	var minimumTrackDuration = 90;
-	var storageKey = 'album-music-state';
+	var storageKey = 'album-music-state-v2';
 
 	if (!player || !trackSelect || !audio || !credit || !status || !toggle
 		|| !toggleLabel || !toggleIcon || !controls)
