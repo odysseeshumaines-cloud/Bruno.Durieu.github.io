@@ -55,8 +55,12 @@ layout: default
   </header>
 
   <!-- Thumbnail -->
-  <section id="thumbnails" style="display: none;" data-slideshow="5000">
+  <section id="thumbnails" style="display: none;">
     <div id="private-folders">
+      <div class="private-category">
+        <h2>Immortelle</h2>
+        <video controls preload="none" data-private-video="{{ '/gallery/Private/Diaporama musical/Immortelle.mp4' | relative_url }}" aria-label="Diaporama Immortelle" style="display: block; width: 100%; max-width: 960px;"></video>
+      </div>
       {% for category in private_categories %}
         {% assign category_path = '/gallery/Private/' | append: category | append: '/' %}
         {% assign category_gallery = site.static_files | where: "image", true | where_exp: "f", "f.path contains category_path" %}
@@ -205,15 +209,14 @@ layout: default
             image.setAttribute('src', image.getAttribute('data-private-preview'));
             image.removeAttribute('data-private-preview');
           });
+          thumbnails.querySelectorAll('video[data-private-video]').forEach(function(video) {
+            video.setAttribute('src', video.getAttribute('data-private-video'));
+            video.removeAttribute('data-private-video');
+            video.load();
+          });
           thumbnails.style.removeProperty('display');
           folderPicker.hidden = false;
           message.textContent = '';
-          if (window.main && typeof window.main.slides !== 'undefined' && window.main.slides.length > 0) {
-            window.setTimeout(function() {
-              window.main.switchTo(Math.floor(Math.random() * window.main.slides.length), true);
-              window.main.startSlideshow();
-            }, 100);
-          }
           return;
         }
 
