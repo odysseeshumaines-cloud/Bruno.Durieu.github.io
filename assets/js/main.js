@@ -454,6 +454,9 @@ var main = (function($) { var _ = {
 	 */
 	initViewer: function() {
 
+		if (_.$thumbnails.is('[data-disable-viewer]'))
+			return;
+
 		// Bind thumbnail click event.
 			_.$thumbnails
 				.on('click', '.thumbnail', function(event) {

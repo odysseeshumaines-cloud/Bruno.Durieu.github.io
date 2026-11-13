@@ -55,11 +55,13 @@ layout: default
   </header>
 
   <!-- Thumbnail -->
-  <section id="thumbnails" style="display: none;">
+  <section id="thumbnails" style="display: none;" data-disable-viewer>
     <div id="private-folders">
       <div class="private-category">
         <h2>Immortelle</h2>
-        <video controls preload="none" data-private-video="{{ '/gallery/Private/Diaporama musical/Immortelle.mp4' | relative_url }}" aria-label="Diaporama Immortelle" style="display: block; width: 100%; max-width: 960px;"></video>
+        <div style="width: 100%; max-width: 1920px; aspect-ratio: 16 / 9;">
+          <video controls preload="none" data-private-video="{{ '/gallery/Private/Diaporama musical/Immortelle.mp4' | relative_url }}" aria-label="Diaporama Immortelle" style="display: block; width: 100%; height: 100%; object-fit: contain;"></video>
+        </div>
       </div>
       {% for category in private_categories %}
         {% assign category_path = '/gallery/Private/' | append: category | append: '/' %}
@@ -101,7 +103,7 @@ layout: default
       </div>
     {% endfor %}
 
-    {% assign private_gallery = site.static_files | where: "image", true | where_exp: "f", "f.path contains '/gallery/Private/' or f.path contains '/gallery/private/'" %}
+    {% assign private_gallery = site.static_files | where: "image", true | where_exp: "f", "f.path contains '/gallery/Private/' or f.path contains '/gallery/private/'" | where_exp: "f", "f.extname != '.mp4'" %}
     {% assign first_uncategorized_image = nil %}
     {% for image in private_gallery %}
       {% unless first_uncategorized_image or image.path contains '/Cosplay/' or image.path contains '/Nature/' or image.path contains '/Piscine/' or image.path contains '/Studio/' or image.path contains '/Urbex/' or image.path contains '/Urbanisme/' %}
@@ -217,6 +219,7 @@ layout: default
           thumbnails.style.removeProperty('display');
           folderPicker.hidden = false;
           message.textContent = '';
+          folderPicker.scrollIntoView();
           return;
         }
 
