@@ -70,53 +70,53 @@ tracks:
     duration: 314.93
 
 default:
+  - vercors
   - humming-of-the-elves
   - piano
   - rock
-  - vercors
 
 albums:
   "/Faune.html":
+    - vercors
     - humming-of-the-elves
     - Relaxing-Meditation
     - piano
-    - vercors
   "/Faune-autres.html":
+    - vercors
     - humming-of-the-elves
     - Relaxing-Meditation
     - piano
-    - vercors
   "/Mammiferes.html":
+    - vercors
     - humming-of-the-elves
     - Relaxing-Meditation
     - piano
-    - vercors
   "/Oiseaux.html":
+    - vercors
     - humming-of-the-elves
     - Relaxing-Meditation
     - piano
-    - vercors
   "/Paysages.html":
+    - vercors
     - piano
     - piano-long
     - humming-of-the-elves
-    - vercors
   "/Portrait.html":
+    - vercors
     - humming-of-the-elves
     - rock
     - greek-taverna
-    - vercors
   "/Urbanisme.html":
+    - vercors
     - humming-of-the-elves
     - rock
-    - vercors
   "/Rue.html":
+    - vercors
     - humming-of-the-elves
     - greek-taverna
     - rock
-    - vercors
   "/Private.html":
+    - vercors
     - humming-of-the-elves
     - private-funk
     - rock
-    - vercors
