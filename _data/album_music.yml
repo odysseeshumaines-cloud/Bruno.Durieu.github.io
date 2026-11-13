@@ -62,62 +62,61 @@ tracks:
     creator: "Prime45"
     source: "https://freesound.org/people/Prime45/sounds/506014"
     duration: 155.69
-  music-track-beats-1:
-    label: "Beat énergique - musique track beats 1 (1 min 39)"
-    file: "music-track-beats-1.mp3"
-    title: "music track beats 1"
-    creator: "Attia.phonatics"
-    source: "https://freesound.org/people/Attia.phonatics/sounds/829464/"
-    duration: 99.071
+  vercors:
+    label: "Vercors (Entre ciel et falaises) (5 min 15)"
+    file: "Vercors (Entre ciel et falaises).mp3"
+    title: "Vercors (Entre ciel et falaises)"
+    creator: "Odyssée Humaine"
+    duration: 314.93
 
 default:
   - humming-of-the-elves
   - piano
   - rock
-  - music-track-beats-1
+  - vercors
 
 albums:
   "/Faune.html":
     - humming-of-the-elves
     - Relaxing-Meditation
     - piano
-    - music-track-beats-1
+    - vercors
   "/Faune-autres.html":
     - humming-of-the-elves
     - Relaxing-Meditation
     - piano
-    - music-track-beats-1
+    - vercors
   "/Mammiferes.html":
     - humming-of-the-elves
     - Relaxing-Meditation
     - piano
-    - music-track-beats-1
+    - vercors
   "/Oiseaux.html":
     - humming-of-the-elves
     - Relaxing-Meditation
     - piano
-    - music-track-beats-1
+    - vercors
   "/Paysages.html":
     - piano
     - piano-long
     - humming-of-the-elves
-    - music-track-beats-1
+    - vercors
   "/Portrait.html":
     - humming-of-the-elves
     - rock
     - greek-taverna
-    - music-track-beats-1
+    - vercors
   "/Urbanisme.html":
     - humming-of-the-elves
     - rock
-    - music-track-beats-1
+    - vercors
   "/Rue.html":
     - humming-of-the-elves
     - greek-taverna
     - rock
-    - music-track-beats-1
+    - vercors
   "/Private.html":
     - humming-of-the-elves
     - private-funk
     - rock
-    - music-track-beats-1
+    - vercors

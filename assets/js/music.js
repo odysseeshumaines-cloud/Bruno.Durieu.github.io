@@ -114,6 +114,12 @@
 		if (!savedState)
 			return;
 
+		if (savedState.source.indexOf('/assets/music/music-track-beats-1.mp3') !== -1) {
+			removeSavedState();
+			savedState = null;
+			return;
+		}
+
 		for (index = 0; index < options.length; index++) {
 			try {
 				if (new URL(options[index].value, window.location.href).href === savedState.source) {
@@ -142,7 +148,11 @@
 
 		audio.src = option.value;
 		audio.load();
-		credit.href = option.getAttribute('data-source');
+		var source = option.getAttribute('data-source');
+		if (source)
+			credit.href = source;
+		else
+			credit.removeAttribute('href');
 		credit.textContent = option.getAttribute('data-title')
 			+ ' — ' + option.getAttribute('data-creator');
 		status.textContent = '';
