@@ -58,9 +58,9 @@ layout: default
   <section id="thumbnails" style="display: none;" data-disable-viewer>
     <div id="private-folders">
       <div class="private-category">
-        <h2>Immortelle</h2>
-        <div style="width: 100%; max-width: 1920px; aspect-ratio: 16 / 9;">
-          <video controls preload="none" data-private-video="{{ '/gallery/Private/Diaporama musical/Immortelle.mp4' | relative_url }}" aria-label="Diaporama Immortelle" style="display: block; width: 100%; height: 100%; object-fit: contain;"></video>
+        <h2>Diaporama Immortelle</h2>
+        <div style="width: 100%; max-width: min(1280px, calc(80vh * 16 / 9)); aspect-ratio: 16 / 9;">
+          <video controls controlslist="nodownload nofullscreen noremoteplayback" disablepictureinpicture playsinline preload="none" data-private-video="{{ '/gallery/Private/Diaporama musical/Immortelle.mp4' | relative_url }}" aria-label="Diaporama Immortelle" style="display: block; width: 100%; height: 100%; object-fit: contain;"></video>
         </div>
       </div>
       {% for category in private_categories %}
