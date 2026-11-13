@@ -73,9 +73,12 @@ layout: default
       </div>
       <div class="private-category">
         <h2>Diaporama Immortelle</h2>
-        <div style="width: 100%; max-width: min(1280px, calc(80vh * 16 / 9)); aspect-ratio: 16 / 9;">
-          <video controls controlslist="nodownload nofullscreen noremoteplayback" disablepictureinpicture playsinline preload="none" data-private-video="{{ '/gallery/Private/Diaporama musical/Immortelle.mp4' | relative_url }}" aria-label="Diaporama Immortelle" style="display: block; width: 100%; height: 100%; object-fit: contain;"></video>
-        </div>
+        <button type="button" data-open-immortelle>Voir la vidéo en HD</button>
+        <dialog id="immortelle-dialog" aria-labelledby="immortelle-title" style="width: min(96vw, 1920px); max-width: 1920px; max-height: 90vh; padding: 1em; border: 0; background: #101010; color: #fff;">
+          <h2 id="immortelle-title">Diaporama Immortelle</h2>
+          <button type="button" data-close-immortelle>Fermer</button>
+          <video controls controlslist="nodownload nofullscreen noremoteplayback" disablepictureinpicture playsinline preload="none" data-private-video="{{ '/gallery/Private/Diaporama musical/Immortelle.mp4' | relative_url }}" aria-label="Diaporama Immortelle" style="display: block; width: 100%; max-height: 80vh; aspect-ratio: 16 / 9; object-fit: contain;"></video>
+        </dialog>
       </div>
       {% for category in private_categories %}
         {% assign category_path = '/gallery/Private/' | append: category | append: '/' %}
@@ -151,6 +154,9 @@ layout: default
       var rootSlideImage = rootSlideshow.querySelector('[data-private-slide-image]');
       var rootSlideCount = rootSlideshow.querySelector('[data-private-slide-count]');
       var rootSlideToggle = rootSlideshow.querySelector('[data-private-slide-toggle]');
+      var immortelleDialog = document.getElementById('immortelle-dialog');
+      var immortelleVideo = immortelleDialog.querySelector('video');
+      var resumeRootSlideshowAfterVideo = false;
       var rootSlidePaths;
       var rootSlideIndex = -1;
       var rootSlideTimer = null;
@@ -211,6 +217,35 @@ layout: default
           startRootSlideshow();
         } else {
           stopRootSlideshow();
+        }
+      });
+
+      document.querySelector('[data-open-immortelle]').addEventListener('click', function() {
+        resumeRootSlideshowAfterVideo = rootSlideTimer !== null;
+        stopRootSlideshow();
+        immortelleDialog.showModal();
+        immortelleVideo.setAttribute('src', immortelleVideo.getAttribute('data-private-video'));
+        immortelleVideo.load();
+        immortelleVideo.play().catch(function(error) {
+          console.error('Unable to start the Immortelle video.', error);
+        });
+      });
+
+      immortelleDialog.querySelector('[data-close-immortelle]').addEventListener('click', function() {
+        immortelleDialog.close();
+      });
+
+      immortelleDialog.addEventListener('close', function() {
+        immortelleVideo.pause();
+        if (resumeRootSlideshowAfterVideo) {
+          startRootSlideshow();
+          resumeRootSlideshowAfterVideo = false;
+        }
+      });
+
+      immortelleDialog.addEventListener('click', function(event) {
+        if (event.target === immortelleDialog) {
+          immortelleDialog.close();
         }
       });
 
@@ -292,11 +327,6 @@ layout: default
           thumbnails.querySelectorAll('img[data-private-preview]').forEach(function(image) {
             image.setAttribute('src', image.getAttribute('data-private-preview'));
             image.removeAttribute('data-private-preview');
-          });
-          thumbnails.querySelectorAll('video[data-private-video]').forEach(function(video) {
-            video.setAttribute('src', video.getAttribute('data-private-video'));
-            video.removeAttribute('data-private-video');
-            video.load();
           });
           thumbnails.style.removeProperty('display');
           folderPicker.hidden = false;
