@@ -55,22 +55,8 @@ layout: default
   </header>
 
   <!-- Thumbnail -->
-  <section id="thumbnails" style="display: none;" data-disable-viewer>
+  <section id="thumbnails" style="display: none;" data-slideshow="5000">
     <div id="private-folders">
-      {% assign private_slideshow_images = site.static_files | where: "image", true | where_exp: "f", "f.path contains '/gallery/Private/' or f.path contains '/gallery/private/'" | where_exp: "f", "f.extname == '.jpg' or f.extname == '.jpeg' or f.extname == '.png' or f.extname == '.webp' or f.extname == '.gif'" %}
-      {% capture private_slideshow_paths %}[{% for image in private_slideshow_images %}{% unless forloop.first %},{% endunless %}{{ image.path | relative_url | jsonify }}{% endfor %}]{% endcapture %}
-      <div class="private-category" id="private-root-slideshow" data-images="{{ private_slideshow_paths | strip | escape }}">
-        <h2>Diaporama photos</h2>
-        <div style="width: 100%; max-width: min(1280px, calc(80vh * 16 / 9)); aspect-ratio: 16 / 9; background: #101010;">
-          <img data-private-slide-image alt="Photo du diaporama privé" style="display: block; width: 100%; height: 100%; object-fit: contain;" />
-        </div>
-        <p>
-          <button type="button" data-private-slide-previous aria-label="Photo précédente">Précédente</button>
-          <span data-private-slide-count aria-live="polite"></span>
-          <button type="button" data-private-slide-next aria-label="Photo suivante">Suivante</button>
-          <button type="button" data-private-slide-toggle>Pause</button>
-        </p>
-      </div>
       <div class="private-category">
         <h2>Diaporama Immortelle</h2>
         <button type="button" data-open-immortelle>Voir la vidéo en HD</button>
@@ -150,79 +136,10 @@ layout: default
       var thumbnails = document.getElementById('thumbnails');
       var categoryNav = document.querySelector('.private-category-nav');
       var folderPicker = document.getElementById('private-folders');
-      var rootSlideshow = document.getElementById('private-root-slideshow');
-      var rootSlideImage = rootSlideshow.querySelector('[data-private-slide-image]');
-      var rootSlideCount = rootSlideshow.querySelector('[data-private-slide-count]');
-      var rootSlideToggle = rootSlideshow.querySelector('[data-private-slide-toggle]');
       var immortelleDialog = document.getElementById('immortelle-dialog');
       var immortelleVideo = immortelleDialog.querySelector('video');
-      var resumeRootSlideshowAfterVideo = false;
-      var rootSlidePaths;
-      var rootSlideIndex = -1;
-      var rootSlideTimer = null;
-
-      try {
-        rootSlidePaths = JSON.parse(rootSlideshow.getAttribute('data-images'));
-      } catch (error) {
-        console.error('Unable to parse private slideshow image paths.', error);
-        rootSlidePaths = [];
-      }
-
-      if (!Array.isArray(rootSlidePaths)
-      || rootSlidePaths.some(function(path) {
-        return typeof path !== 'string' || path.length === 0;
-      })) {
-        console.error('Private slideshow image paths must be an array of non-empty paths.');
-        rootSlidePaths = [];
-      }
-
-      function showRootSlide(index) {
-        if (rootSlidePaths.length === 0) {
-          return;
-        }
-
-        rootSlideIndex = (index + rootSlidePaths.length) % rootSlidePaths.length;
-        rootSlideImage.setAttribute('src', rootSlidePaths[rootSlideIndex]);
-        rootSlideCount.textContent = (rootSlideIndex + 1) + ' / ' + rootSlidePaths.length;
-      }
-
-      function stopRootSlideshow() {
-        if (rootSlideTimer !== null) {
-          window.clearInterval(rootSlideTimer);
-          rootSlideTimer = null;
-        }
-        rootSlideToggle.textContent = 'Reprendre';
-      }
-
-      function startRootSlideshow() {
-        stopRootSlideshow();
-        rootSlideToggle.textContent = 'Pause';
-        if (rootSlidePaths.length > 1) {
-          rootSlideTimer = window.setInterval(function() {
-            showRootSlide(rootSlideIndex + 1);
-          }, 5000);
-        }
-      }
-
-      rootSlideshow.querySelector('[data-private-slide-previous]').addEventListener('click', function() {
-        showRootSlide(rootSlideIndex - 1);
-      });
-
-      rootSlideshow.querySelector('[data-private-slide-next]').addEventListener('click', function() {
-        showRootSlide(rootSlideIndex + 1);
-      });
-
-      rootSlideToggle.addEventListener('click', function() {
-        if (rootSlideTimer === null) {
-          startRootSlideshow();
-        } else {
-          stopRootSlideshow();
-        }
-      });
 
       document.querySelector('[data-open-immortelle]').addEventListener('click', function() {
-        resumeRootSlideshowAfterVideo = rootSlideTimer !== null;
-        stopRootSlideshow();
         immortelleDialog.showModal();
         immortelleVideo.setAttribute('src', immortelleVideo.getAttribute('data-private-video'));
         immortelleVideo.load();
@@ -237,10 +154,6 @@ layout: default
 
       immortelleDialog.addEventListener('close', function() {
         immortelleVideo.pause();
-        if (resumeRootSlideshowAfterVideo) {
-          startRootSlideshow();
-          resumeRootSlideshowAfterVideo = false;
-        }
       });
 
       immortelleDialog.addEventListener('click', function(event) {
@@ -255,7 +168,6 @@ layout: default
           return;
         }
 
-        stopRootSlideshow();
         folderPicker.hidden = true;
         thumbnails.querySelectorAll('[data-private-gallery]').forEach(function(gallery) {
           gallery.hidden = gallery !== folder;
@@ -269,7 +181,6 @@ layout: default
         });
         folderPicker.hidden = false;
         folderPicker.scrollIntoView();
-        startRootSlideshow();
       }
 
       categoryNav.addEventListener('click', function(event) {
@@ -330,9 +241,13 @@ layout: default
           });
           thumbnails.style.removeProperty('display');
           folderPicker.hidden = false;
-          showRootSlide(Math.floor(Math.random() * rootSlidePaths.length));
-          startRootSlideshow();
           message.textContent = '';
+          if (window.main && Array.isArray(window.main.slides) && window.main.slides.length > 0) {
+            window.setTimeout(function() {
+              window.main.switchTo(Math.floor(Math.random() * window.main.slides.length), true);
+              window.main.startSlideshow();
+            }, 100);
+          }
           folderPicker.scrollIntoView();
           return;
         }
